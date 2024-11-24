@@ -18,7 +18,7 @@ int main() {
     swap(&x, &y);
 
     printf("The result number X is: %d\n",  x);
-    printf("The result number Y is: %d\n", y);
+    printf("The result number Y is: %d\n",  y);
 
     return 0;
 }
