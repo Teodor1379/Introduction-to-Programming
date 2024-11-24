@@ -52,10 +52,10 @@ void findMode(const unsigned int array[], size_t size) {
     unsigned int maxCounter = 0;
     unsigned int indNumber  = 0;
 
-    for (unsigned int i = 0; i < size; ++i) {
+    for (size_t i = 0; i < size; ++i) {
         unsigned int currentT = 1;
 
-        for (unsigned int j = i + 1; j < size; ++j) {
+        for (size_t j = i + 1; j < size; ++j) {
             if (array[j] == array[i]) {
                 currentT = currentT + 1;
             }
