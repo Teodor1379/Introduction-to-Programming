@@ -7,6 +7,8 @@ void functionC();
 int FLAG = 0;
 
 int main() {
+    functionA();
+
     printf("The FLAG value is: %d\n", FLAG);
 
     return 0;
