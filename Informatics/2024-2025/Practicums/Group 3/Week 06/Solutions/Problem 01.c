@@ -24,8 +24,10 @@ unsigned int fibonacci(unsigned int n) {
 int main() {
     unsigned int n = 0;
 
-    printf("Enter the number: ");
-    scanf("%u", &n);
+    do {
+        printf("Enter the number: ");
+        scanf("%u", &n);
+    } while (n == 0);
 
     printf("The number of Fibonacci is: %u\n", fibonacci(n));
 
