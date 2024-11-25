@@ -17,6 +17,7 @@ int main() {
 
     do {
         printf("Enter the size: ");
+
         scanf("%zu", &size);
 
         while (getchar() != '\n');

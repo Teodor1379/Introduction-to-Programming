@@ -21,6 +21,7 @@ int main() {
 
     do {
         printf("Enter the size of the array: ");
+
         scanf("%zu", &size);
 
         while (getchar() != '\n');
