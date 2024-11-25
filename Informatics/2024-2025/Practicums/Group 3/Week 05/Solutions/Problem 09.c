@@ -5,6 +5,7 @@ int main() {
 
     do {
         printf("Enter the number N: ");
+
         scanf("%u", &n);
     } while (n == 0);
 

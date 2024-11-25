@@ -4,11 +4,11 @@ int main() {
     unsigned int n = 0;
 
     printf("Enter the number N: ");
+
     scanf("%u", &n);
 
     unsigned int sumOdds    =   0;
     unsigned int sumEvens   =   0;
-    
 
     for (unsigned int i = 1; i <= n; ++i) {
         sumOdds  = sumOdds  + (i % 2 == 0 ? 0 : i);

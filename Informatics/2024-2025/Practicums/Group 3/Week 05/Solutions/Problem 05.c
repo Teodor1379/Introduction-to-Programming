@@ -4,6 +4,7 @@ int main() {
     unsigned int number = 0;
 
     printf("Enter the number: ");
+
     scanf("%u", &number);
 
     if (number <= 1) {

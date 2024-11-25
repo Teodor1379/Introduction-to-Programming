@@ -4,6 +4,7 @@ int main() {
     unsigned int    n   =   0;
 
     printf("Enter the number N: ");
+
     scanf("%u", &n);
 
     unsigned int    sum     =   0;

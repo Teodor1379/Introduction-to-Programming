@@ -5,6 +5,7 @@ int main() {
     unsigned int    reversed    =   0;
 
     printf("Enter the number: ");
+
     scanf("%u", &number);
 
     while (number > 0) {

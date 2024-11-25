@@ -6,11 +6,13 @@ int main() {
 
     do {
         printf("Enter the number N: ");
+
         scanf("%lld", &n);
     } while (n <= 0);
 
     do {
         printf("Enter the number M: ");
+
         scanf("%lld", &m);
     } while (m <= 0);
 

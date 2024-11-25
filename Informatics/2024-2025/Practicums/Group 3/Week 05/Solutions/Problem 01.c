@@ -1,10 +1,35 @@
 #include <stdio.h>
 
+void solutionOne    ();
+void solutionTwo    ();
+void solutionThree  ();
+void solutionFour   ();
+void solutionFive   ();
+void solutionSix    ();
+void solutionSeven  ();
+void solutionEight  ();
+void solutionNine   ();
+
+int main() {
+    solutionOne     ();
+    solutionTwo     ();
+    solutionThree   ();
+    solutionFour    ();
+    solutionFive    ();
+    solutionSix     ();
+    solutionSeven   ();
+    solutionEight   ();
+    solutionNine    ();
+
+    return 0;
+}
+
 void solutionOne() {
     long long n = 0;
 
     do {
         printf("Enter the number N: ");
+
         scanf("%lld", &n);
     } while (n < 0);
 
@@ -22,6 +47,7 @@ void solutionTwo() {
 
     do {
         printf("Enter the number N: ");
+
         scanf("%lld", &n);
     } while (n < 0);
 
@@ -39,6 +65,7 @@ void solutionThree() {
 
     do {
         printf("Enter the number N: ");
+
         scanf("%lld", &n);
     } while (n < 0);
 
@@ -56,6 +83,7 @@ void solutionFour() {
 
     do {
         printf("Enter the number N: ");
+
         scanf("%lld", &n);
     } while (n < 0);
 
@@ -73,6 +101,7 @@ void solutionFive() {
 
     do {
         printf("Enter the number N: ");
+
         scanf("%lld", &n);
     } while (n < 0);
 
@@ -90,6 +119,7 @@ void solutionSix() {
 
     do {
         printf("Enter the number N: ");
+
         scanf("%lld", &n);
     } while (n < 0);
 
@@ -107,6 +137,7 @@ void solutionSeven() {
 
     do {
         printf("Enter the number N: ");
+
         scanf("%lld", &n);
     } while (n < 0);
 
@@ -124,6 +155,7 @@ void solutionEight() {
 
     do {
         printf("Enter the number N: ");
+
         scanf("%lld", &n);
     } while (n < 0);
 
@@ -141,6 +173,7 @@ void solutionNine() {
 
     do {
         printf("Enter the number N: ");
+
         scanf("%lld", &n);
     } while (n < 0);
 
@@ -151,18 +184,4 @@ void solutionNine() {
     }
 
     printf("The result is: %lld\n", result);
-}
-
-int main() {
-    // solutionOne();
-    // solutionTwo();
-    // solutionThree();
-    // solutionFour();
-    // solutionFive();
-    // solutionSix();
-    // solutionSeven();
-    // solutionEight();
-    // solutionNine();
-
-    return 0;
 }
