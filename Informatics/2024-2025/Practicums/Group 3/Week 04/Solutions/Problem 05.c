@@ -23,18 +23,10 @@ void printNumberBinary(unsigned int number) {
 
 int main() {
     unsigned int n = 0;
-    unsigned int s = 0;
     unsigned int r = 0;
 
     printf("Enter the number N: "); scanf("%u", &n);
-    printf("Enter the number S: "); scanf("%u", &s);
     printf("Enter the number R: "); scanf("%u", &r);
-
-    if (s >= 8 * sizeof(unsigned int)) {
-        printf("Invalid value for S!\n");
-
-        return 1;
-    }
 
     if (r >= 8 * sizeof(unsigned int)) {
         printf("Invalid value for R!\n");
@@ -45,8 +37,7 @@ int main() {
     printf("The old version of the number is: ");
     printNumberBinary(n);
 
-    n = (n & ~(1 << s));
-    n = (n |  (1 << r));
+    n = (n | (1 << r));
 
     printf("The new version of the number is: ");
     printNumberBinary(n);

@@ -28,6 +28,12 @@ int main() {
     printf("Enter the number N: "); scanf("%u", &n);
     printf("Enter the number R: "); scanf("%u", &r);
 
+    if (r >= 8 * sizeof(unsigned int)) {
+        printf("Invalid value for R!\n");
+
+        return 1;
+    }
+
     printf("The old version of the number is: ");
     printNumberBinary(n);
 
