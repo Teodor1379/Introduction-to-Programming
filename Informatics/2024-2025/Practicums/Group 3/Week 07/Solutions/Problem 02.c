@@ -89,7 +89,7 @@ unsigned int findMinNumber1(const unsigned int array[], size_t size) {
     if (size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
-        return (unsigned int)(-1);
+        exit(EXIT_FAILURE);
     }
 
     unsigned int minNumber = array[0];

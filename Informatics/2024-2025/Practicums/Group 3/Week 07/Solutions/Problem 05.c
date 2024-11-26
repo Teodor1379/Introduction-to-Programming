@@ -40,6 +40,12 @@ int main() {
 }
 
 void inputArray(double array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        exit(EXIT_FAILURE);
+    }
+
     printf("Enter the elements of the array: ");
 
     for (size_t i = 0; i < size; ++i) {
@@ -48,6 +54,12 @@ void inputArray(double array[], size_t size) {
 }
 
 void printArray(const double array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        exit(EXIT_FAILURE);
+    }
+
     printf("The elements of the array are: ");
 
     for (size_t i = 0; i < size; ++i) {
@@ -58,6 +70,12 @@ void printArray(const double array[], size_t size) {
 }
 
 double findMin(const double array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        exit(EXIT_FAILURE);
+    }
+
     double minNumber = array[0];
 
     for (size_t i = 1; i < size; ++i) {
@@ -70,6 +88,12 @@ double findMin(const double array[], size_t size) {
 }
 
 double findMax(const double array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        exit(EXIT_FAILURE);
+    }
+
     double maxNumber = array[0];
 
     for (size_t i = 1; i < size; ++i) {
@@ -82,6 +106,12 @@ double findMax(const double array[], size_t size) {
 }
 
 unsigned int countMinSame(const double array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        exit(EXIT_FAILURE);
+    }
+
     unsigned int    result  =   0;
     double          minNum  =   findMin(array, size);
 
@@ -95,6 +125,12 @@ unsigned int countMinSame(const double array[], size_t size) {
 }
 
 unsigned int countMaxSame(const double array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        exit(EXIT_FAILURE);
+    }
+
     unsigned int    result  =   0;
     double          maxNum  =   findMax(array, size);
 

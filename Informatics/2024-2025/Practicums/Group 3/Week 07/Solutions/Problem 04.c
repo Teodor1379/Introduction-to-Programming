@@ -34,6 +34,12 @@ int main() {
 }
 
 void inputArray(unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     printf("Enter the elements of the array: ");
 
     for (size_t i = 0; i < size; ++i) {
@@ -42,6 +48,12 @@ void inputArray(unsigned int array[], size_t size) {
 }
 
 void printArray(const unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     printf("The elements of the array are: ");
 
     for (size_t i = 0; i < size; ++i) {
@@ -52,6 +64,12 @@ void printArray(const unsigned int array[], size_t size) {
 }
 
 void reverseArraySolution1(unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     unsigned int temporary[MAX_CAPACITY] = { 0 };
 
     for (size_t i = 0; i < size; ++i) {
@@ -64,6 +82,12 @@ void reverseArraySolution1(unsigned int array[], size_t size) {
 }
 
 void reverseArraySolution2(unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+    
     for (size_t i = 0; i < size / 2; ++i) {
         unsigned int temporary = array[i];
 
