@@ -16,10 +16,10 @@ int main() {
     double harmonicMean     =   3.0 / ((1.0 / number1) + (1.0 / number2) + (1.0 / number3));
     double quadraticMean    =   sqrt((pow(number1, 2) + pow(number2, 2) + pow(number3, 2)) / 3.0);
 
-    printf("The arithmetic mean is: %lf\n", arithmeticMean);
-    printf("The geometric mean is: %lf\n", geometricMean);
-    printf("The harmonic mean is: %lf\n", harmonicMean);
-    printf("The quadratic mean is: %lf\n", quadraticMean);
+    printf("The arithmetic  mean is: %lf\n",    arithmeticMean  );
+    printf("The geometric   mean is: %lf\n",    geometricMean   );
+    printf("The harmonic    mean is: %lf\n",    harmonicMean    );
+    printf("The quadratic   mean is: %lf\n",    quadraticMean   );
 
     return 0;
 }

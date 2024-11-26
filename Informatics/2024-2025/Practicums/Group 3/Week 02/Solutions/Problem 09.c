@@ -4,6 +4,7 @@ int main() {
     int number = 0;
 
     printf("Enter the number: ");
+
     scanf("%d", &number);
 
     int digit1 = number % 10;

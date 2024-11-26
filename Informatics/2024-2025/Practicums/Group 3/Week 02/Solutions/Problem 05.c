@@ -6,6 +6,7 @@ int main() {
     double r = 0.0;
 
     printf("Enter the radius of the circle: ");
+
     scanf("%lf", &r);
 
     double c = 2 * PI * r;

@@ -1,9 +1,9 @@
 #include <stdio.h>
 
 int main() {
-    int     a   = 0;
-    double  b   = 0.0;
-    char    c;
+    int     a   = 0     ;
+    double  b   = 0.0   ;
+    char    c   = '\0'  ;
 
     scanf("%d %lf %c", &a, &b, &c);
 
