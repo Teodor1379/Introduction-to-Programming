@@ -40,6 +40,12 @@ int main() {
 }
 
 void inputArray(unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     printf("Enter the elements of the array: ");
 
     for (size_t i = 0; i < size; ++i) {
@@ -48,6 +54,12 @@ void inputArray(unsigned int array[], size_t size) {
 }
 
 void printArray(const unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     printf("The elements of the array: ");
 
     for (size_t i = 0; i < size; ++i) {
@@ -58,6 +70,12 @@ void printArray(const unsigned int array[], size_t size) {
 }
 
 int isSequenceIncreasing(const unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        exit(EXIT_FAILURE);
+    }
+    
     for (size_t i = 0; i < size - 1; ++i) {
         if (array[i] <= array[i + 1]) {
             continue;
@@ -70,6 +88,12 @@ int isSequenceIncreasing(const unsigned int array[], size_t size) {
 }
 
 int isSequenceDecreasing(const unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        exit(EXIT_FAILURE);
+    }
+
     for (size_t i = 0; i < size - 1; ++i) {
         if (array[i] >= array[i + 1]) {
             continue;
@@ -82,6 +106,12 @@ int isSequenceDecreasing(const unsigned int array[], size_t size) {
 }
 
 int isSequenceStrictlyIncreasing(const unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        exit(EXIT_FAILURE);
+    }
+
     for (size_t i = 0; i < size - 1; ++i) {
         if (array[i] < array[i + 1]) {
             continue;
@@ -94,6 +124,12 @@ int isSequenceStrictlyIncreasing(const unsigned int array[], size_t size) {
 }
 
 int isSequenceStrictlyDecreasing(const unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        exit(EXIT_FAILURE);
+    }
+
     for (size_t i = 0; i < size - 1; ++i) {
         if (array[i] > array[i + 1]) {
             continue;
