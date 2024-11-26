@@ -34,6 +34,7 @@ int main() {
     long long year  =   0;
 
     printf("Enter the date in format DD MM YYYY: ");
+
     scanf("%lld %lld %lld", &day, &month, &year);
 
     if (validateDate(day, month, year)) {

@@ -26,7 +26,10 @@ int main() {
 
     do {
         printf("Enter the number: ");
+
         scanf("%u", &n);
+
+        while (getchar() != '\n');
     } while (n == 0);
 
     printf("The number of Fibonacci is: %u\n", fibonacci(n));
