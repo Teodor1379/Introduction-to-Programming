@@ -24,7 +24,10 @@ int main() {
 
     do {
         printf("Eter the number: ");
+
         scanf("%u", &number);
+
+        while (getchar() != '\n');
     } while (number == 0);
 
     printInformationNumbers(number);

@@ -29,7 +29,10 @@ int main() {
 
     do {
         printf("Enter number: ");
+
         scanf("%u", &number);
+
+        while (getchar() != '\n');
     } while (number == 0);
 
     printf("%s\n", conditionSumDigits(number) ? "Yes" : "No");

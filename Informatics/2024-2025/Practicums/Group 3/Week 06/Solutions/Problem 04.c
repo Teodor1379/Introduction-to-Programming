@@ -12,6 +12,7 @@ int main() {
     double value = 0.0;
 
     printf("Enter the value: ");
+
     scanf("%lf", &value);
 
     printf("The absolute value of the number is: %lf\n", absoluteValue(value));

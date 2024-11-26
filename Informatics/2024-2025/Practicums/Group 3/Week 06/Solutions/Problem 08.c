@@ -19,7 +19,10 @@ int main() {
 
     do {
         printf("Enter the number N: ");
+
         scanf("%u", &n);
+
+        while (getchar() != '\n');
     } while (n < 2);
 
     showCanonical(n);
