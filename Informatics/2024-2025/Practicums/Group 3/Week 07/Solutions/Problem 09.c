@@ -34,6 +34,12 @@ int main() {
 }
 
 void inputArray(unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     printf("Enter the elements of the array: ");
 
     for (size_t i = 0; i < size; ++i) {
@@ -42,6 +48,12 @@ void inputArray(unsigned int array[], size_t size) {
 }
 
 void printArray(const unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     printf("The elements of the array are: ");
 
     for (size_t i = 0; i < size; ++i) {
@@ -52,6 +64,12 @@ void printArray(const unsigned int array[], size_t size) {
 }
 
 void findSubArrayMin(const unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     size_t maxStart = 0;
     size_t maxFinal = 0;
 
@@ -83,10 +101,17 @@ void findSubArrayMin(const unsigned int array[], size_t size) {
         maxFinal    =   size - 1;
     }
 
-    printArray(array + maxStart, maxFinal - maxStart + 1);
+    printf("The MAX start index is: %zu\n", maxStart);
+    printf("The MAX final index is: %zu\n", maxFinal);
 }
 
 void findSubArrayMax(const unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+    
     size_t maxStart = 0;
     size_t maxFinal = 0;
 
@@ -118,5 +143,6 @@ void findSubArrayMax(const unsigned int array[], size_t size) {
         maxFinal    =   size - 1;
     }
 
-    printArray(array + maxStart, maxFinal - maxStart + 1);
+    printf("The MAX start index is: %zu\n", maxStart);
+    printf("The MAX final index is: %zu\n", maxFinal);
 }

@@ -35,12 +35,24 @@ int main() {
 }
 
 void inputArray(unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     for (size_t i = 0; i < size; ++i) {
         scanf("%u", &array[i]);
     }
 }
 
 void printArray(const unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     for (size_t i = 0; i < size; ++i) {
         printf("%u ", array[i]);
     }
@@ -49,6 +61,12 @@ void printArray(const unsigned int array[], size_t size) {
 }
 
 void printPairs(const unsigned int array[], size_t size, unsigned int m) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     printf("All pairs are: ");
     
     for (size_t i = 0; i < size; ++i) {
