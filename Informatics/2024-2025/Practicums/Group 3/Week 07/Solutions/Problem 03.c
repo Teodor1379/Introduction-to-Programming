@@ -39,6 +39,12 @@ int main() {
 }
 
 void inputArray(unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     printf("Enter the elements of the array: ");
 
     for (size_t i = 0; i < size; ++i) {
@@ -47,6 +53,12 @@ void inputArray(unsigned int array[], size_t size) {
 }
 
 void printArray(const unsigned int array[], size_t size) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     printf("The elements of the array are: ");
 
     for (size_t i = 0; i < size; ++i) {
@@ -57,6 +69,12 @@ void printArray(const unsigned int array[], size_t size) {
 }
 
 void rotateArray(unsigned int array[], size_t size, size_t offset) {
+    if (size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        return;
+    }
+
     size_t current = 0;
 
     while (current < (offset % size)) {
