@@ -1,6 +1,8 @@
 #include <stdio.h>
 
+
 const double PI = 3.14;
+
 
 int main() {
     double r = 0.0;
@@ -12,8 +14,8 @@ int main() {
     double c = 2 * PI * r;
     double s = PI * r * r;
 
-    printf("The circumference of the circle is: %lf\n", c);
-    printf("The area of the circle is: %lf\n", s);
+    printf("The circumference   of the circle is: %lf\n", c);
+    printf("The area            of the circle is: %lf\n", s);
 
     return 0;
 }

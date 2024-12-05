@@ -2,9 +2,11 @@
 
 #include <stdio.h>
 
+
 void solutionOne    ();
 void solutionTwo    ();
 void solutionThree  ();
+
 
 int main() {
     solutionOne     ();
@@ -13,6 +15,7 @@ int main() {
 
     return 0;
 }
+
 
 void solutionOne() {
     double x1 = 0.0;

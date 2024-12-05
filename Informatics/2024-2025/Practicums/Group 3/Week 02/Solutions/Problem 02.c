@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+
 int main() {
     int     a   = 0     ;
     double  b   = 0.0   ;
