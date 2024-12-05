@@ -5,6 +5,7 @@ int main() {
     int year = 0;
 
     printf("Enter the year: ");
+
     scanf("%d", &year);
 
     int condition1 = ((year % 4 == 0) && (year % 100 != 0));
