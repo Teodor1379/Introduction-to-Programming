@@ -2,6 +2,8 @@
 
 
 int main() {
+    // With third variable:
+
     int a = 1;
     int b = 3;
 
@@ -13,6 +15,8 @@ int main() {
 
     printf("a is: %d\n", a);
     printf("b is: %d\n", b);
+
+    // Without third variable:
 
     int x = 7;
     int y = 9;
