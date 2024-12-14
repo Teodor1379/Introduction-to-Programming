@@ -1,21 +1,17 @@
-#include <math.h>
-
 #include <stdio.h>
 
 
-#define EPSILON 1e-9
-
-
 int main() {
-    double number1 = 0.0;
-    double number2 = 0.0;
+    float C =   0.0;
+    float F =   0.0;
 
-    printf("Enter the NUMBER 1: "); scanf("%lf",    &number1);
-    printf("Enter the NUMBER 2: "); scanf("%lf",    &number2);
+    printf("Enter the Celsium degrees: ");
 
-    int condition = fabs(number1 - number2) < EPSILON;
+    scanf("%f", &C);
 
-    printf("Are the numbers equal: %d\n", condition);
+    F = C * 1.8 + 32;
+
+    printf("The Fahrenheit degrees are: %f\n", F);
 
     return 0;
 }
