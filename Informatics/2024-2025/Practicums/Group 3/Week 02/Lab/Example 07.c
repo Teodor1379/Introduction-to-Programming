@@ -43,8 +43,8 @@ void numbersIntegers() {
     int number1 =   0;
     int number2 =   0;
 
-    printf("Enter the number 1: "); scanf("%d", &number1);
-    printf("Enter the number 2: "); scanf("%d", &number2);
+    printf("Enter the Number 1: "); scanf("%d", &number1);
+    printf("Enter the Number 2: "); scanf("%d", &number2);
 
 
     printf("+ Number1: %d\n", +number1);    // Unary Plus
@@ -96,8 +96,8 @@ void numbersFloats() {
     float number1   =   0.0;
     float number2   =   0.0;
 
-    printf("Enter the number 1: "); scanf("%f", &number1);
-    printf("Enter the number 2: "); scanf("%f", &number2);
+    printf("Enter the Number 1: "); scanf("%f", &number1);
+    printf("Enter the Number 2: "); scanf("%f", &number2);
 
 
     printf("+ Number1: %f\n", +number1);    // Unary Plus
@@ -147,8 +147,8 @@ void numbersDoubles() {
     double number1  =   0.0;
     double number2  =   0.0;
 
-    printf("Enter the number 1: "); scanf("%lf",    &number1);
-    printf("Enter the number 2: "); scanf("%lf",    &number2);
+    printf("Enter the Number 1: "); scanf("%lf",    &number1);
+    printf("Enter the Number 2: "); scanf("%lf",    &number2);
 
 
     printf("+ Number1: %lf\n",  +number1);  // Unary Plus
@@ -197,8 +197,8 @@ void numbersCharacters() {
     char number1    =   'T';
     char number2    =   'J';
 
-    clearStandardInput(); printf("Enter the number 1: "); scanf("%c", &number1);
-    clearStandardInput(); printf("Enter the number 2: "); scanf("%c", &number2);
+    clearStandardInput();   printf("Enter the Number 1: "); scanf("%c", &number1);
+    clearStandardInput();   printf("Enter the Number 2: "); scanf("%c", &number2);
 
 
     printf("+ Number1: %c\n", +number1);    // Unary Plus
