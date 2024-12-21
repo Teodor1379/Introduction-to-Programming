@@ -108,3 +108,21 @@ int main() {
 
     return 0;
 }
+
+
+
+// warning: ISO C90 does not support 'long long'        [-Wlong-long]
+
+// warning: ISO C90 forbids mixed declarations and code [-Wdeclaration-after-statement]
+
+// warning: ISO C90 does not support the 'll' gnu_printf length modifier    [-Wformat=]
+
+// warning: ISO C90 does not support the '%F' gnu_printf format             [-Wformat=]
+// warning: ISO C90 does not support the "%a" gnu_printf format             [-Wformat=]
+// warning: ISO C90 does not support the "%A" gnu_printf format             [-Wformat=]
+
+// warning: ISO C90 does not support the "%lf" gnu_printf format            [-Wformat=]
+// warning: ISO C90 does not support the "%le" gnu_printf format            [-Wformat=]
+// warning: ISO C90 does not support the "%lE" gnu_printf format            [-Wformat=]
+// warning: ISO C90 does not support the "%lg" gnu_printf format            [-Wformat=]
+// warning: ISO C90 does not support the "%lG" gnu_printf format            [-Wformat=]
