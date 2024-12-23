@@ -14,7 +14,7 @@ void clearStandardInput();
 
 
 int main() {
-    // Arithmetic Operations
+    // Arithmetic Operators
     
     numbersIntegers     ();
     numbersFloats       ();
