@@ -26,14 +26,6 @@ int main() {
 
 
 
-void clearStandardInput() {
-    int c = 0;
-
-    while ((c = getchar()) && c != '\n' && c != EOF);
-}
-
-
-
 void numbersIntegers() {
     putchar('\n');
     putchar('\n');
@@ -165,4 +157,12 @@ void numbersCharacters() {
     putchar('\n');
     putchar('\n');
     putchar('\n');
+}
+
+
+
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
 }
