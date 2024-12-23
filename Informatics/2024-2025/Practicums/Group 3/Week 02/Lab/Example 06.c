@@ -15,9 +15,11 @@ int main() {
     printf("Enter the NUMBER 1: "); scanf("%lf",    &number1);
     printf("Enter the NUMBER 2: "); scanf("%lf",    &number2);
 
+
     int condition = fabs(number1 - number2) < EPSILON;
 
     printf("Are the numbers equal: %d\n", condition);
+
 
     return 0;
 }
