@@ -45,7 +45,7 @@ int main() {
 
     printNumberBinary(n);
 
-    n = (n & ~(1 << r));
+    n = (n ^ (1 << r));
 
     printf("The new version of the number is: ");
 

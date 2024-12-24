@@ -51,7 +51,7 @@ int main() {
 
     printNumberBinary(n);
 
-    printf("The new number N is: %u\n", n);
+    printf("The number itself is: %u\n", n);
 
 
     return 0;
