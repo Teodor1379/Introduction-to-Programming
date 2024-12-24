@@ -1,6 +1,10 @@
 #include <stdio.h>
 
+
+
 #define SIZE 32
+
+
 
 void printNumberBinary(unsigned int number) {
     unsigned int array[SIZE] = { 0 };
@@ -20,6 +24,8 @@ void printNumberBinary(unsigned int number) {
 
     putchar('\n');
 }
+
+
 
 int main() {
     unsigned int number = 0;
