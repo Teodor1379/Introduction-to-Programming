@@ -2,12 +2,26 @@
 
 #include <stdio.h>
 
+
+
 #define PI      3.14
 #define EPSILON 1e-9
+
+
+
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
 
 double equalNumbers(double number1, double number2) {
     return fabs(number1 - number2) < EPSILON;
 }
+
+
 
 double minSides(double side1, double side2, double side3) {
     double minSide = side1 + side2 + side3;
@@ -36,6 +50,7 @@ double avgSides(double side1, double side2, double side3) {
 }
 
 
+
 int existsTriangle(double side1, double side2, double side3) {
     return  side1 < side2 + side3   &&
             side2 < side1 + side3   &&
@@ -45,6 +60,8 @@ int existsTriangle(double side1, double side2, double side3) {
             side2 >= 0.0            &&
             side3 >= 0.0            ;
 }
+
+
 
 double perimeterTriangle(double side1, double side2, double side3) {
     return side1 + side2 + side3;
@@ -59,6 +76,8 @@ double areaTriangle(double side1, double side2, double side3) {
     return sqrt(component1 * component2 * component3 * component4);
 }
 
+
+
 double isTriangleEquilateral(double side1, double side2, double side3) {
     return  equalNumbers(side1, side2)  &&
             equalNumbers(side2, side3);
@@ -70,9 +89,13 @@ double isTriangleRight(double side1, double side2, double side3) {
             equalNumbers(side3 * side3 + side1 * side1, side2 * side2);
 }
 
+
+
 double calculateAngleTriangle(double side1, double side2) {
     return  atan(side1 / side2) * (180.0 / PI);
 }
+
+
 
 void triangleInformation(double side1, double side2, double side3) {
     printf("Side 1 of the triangle is: %lf\n",  side1);
@@ -111,6 +134,8 @@ void rightTriangleInformation(double side1, double side2, double side3) {
     printf("Angle 3 of the triangle is: %lf\n", calculateAngleTriangle(minSides(side1, side2, side3), avgSides(side1, side2, side3)));
 }
 
+
+
 int main() {
     double  side1   =   0.0;
     double  side2   =   0.0;
@@ -119,26 +144,33 @@ int main() {
     do {
         printf("Enter the size of Side 1: ");
 
-        scanf("%lf", &side1);
+        if (scanf("%lf", &side1) != 1) {
+            puts("Invalid Input!");
 
-        while (getchar() != '\n');
+            clearStandardInput();
+        }
     } while (side1 < 0 || equalNumbers(side1, 0.0));
 
     do {
         printf("Enter the size of Side 2: ");
 
-        scanf("%lf", &side2);
+        if (scanf("%lf", &side2) != 1) {
+            puts("Invalid Input!");
 
-        while (getchar() != '\n');
+            clearStandardInput();
+        }
     } while (side2 < 0 || equalNumbers(side2, 0.0));
 
     do {
         printf("Enter the size of Side 3: ");
 
-        scanf("%lf", &side3);
+        if (scanf("%lf", &side3) != 1) {
+            puts("Invalid Input!");
 
-        while (getchar() != '\n');
+            clearStandardInput();
+        }
     } while (side3 < 0 || equalNumbers(side3, 0.0));
+
 
     if (existsTriangle(side1, side2, side3)) {
         if (isTriangleEquilateral(side1, side2, side3)) {
@@ -151,6 +183,7 @@ int main() {
     } else {
         puts("There is no such triangle!");
     }
+
 
     return 0;
 }
