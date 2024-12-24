@@ -32,13 +32,19 @@ int main() {
 
     printf("Enter the number: ");
 
-    scanf("%u", &number);
+    if (scanf("%u", &number) != 1) {
+        puts("Invalid Input!");
+
+        return 1;
+    }
+
 
     printf("The binary form of the number is: ");
 
     printNumberBinary(number);
 
     printf("Is the number even? %s\n", (number & 1) ? "No" : "Yes");
+
 
     return 0;
 }
