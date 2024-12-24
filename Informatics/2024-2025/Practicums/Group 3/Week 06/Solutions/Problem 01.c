@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+
+
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
 unsigned int fibonacci(unsigned int n) {
     if (n < 2) {
         return n;
@@ -21,18 +31,25 @@ unsigned int fibonacci(unsigned int n) {
     return number2;
 }
 
+
+
+
 int main() {
     unsigned int n = 0;
 
     do {
         printf("Enter the number: ");
 
-        scanf("%u", &n);
+        if (scanf("%u", &n) != 1) {
+            puts("Invalid Input!");
 
-        while (getchar() != '\n');
+            clearStandardInput();
+        }
     } while (n == 0);
 
+
     printf("The number of Fibonacci is: %u\n", fibonacci(n));
+
 
     return 0;
 }
