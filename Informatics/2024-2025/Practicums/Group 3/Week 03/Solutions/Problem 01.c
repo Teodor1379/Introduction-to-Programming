@@ -6,8 +6,8 @@ int main() {
     unsigned int x  =   0;
     unsigned int y  =   0;
 
-    printf("Enter the number X: "); scanf("%u", &x);
-    printf("Enter the number Y: "); scanf("%u", &y);
+    printf("Enter the number X: "); if (scanf("%u", &x) != 1)   { puts("Input Error!"); return 1;   }
+    printf("Enter the number Y: "); if (scanf("%u", &y) != 1)   { puts("Input Error!"); return 1;   }
 
 
     printf("The bitwise NOT of X is: %u\n", ~x);
