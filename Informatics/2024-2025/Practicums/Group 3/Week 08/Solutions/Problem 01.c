@@ -1,17 +1,17 @@
-#include <stddef.h>
 #include <stdlib.h>
 
 #include <stdio.h>
+
 
 
 #define MAX_ROWS 100
 #define MAX_COLS 100
 
 
-void manageInput();
 
+unsigned int    inputSize   (unsigned int MAX, int counter, char name[] );
+int             validateSize(unsigned int MAX, unsigned int size        );
 
-size_t inputSize(size_t MAX, int counter, char name[]);
 
 void inputMatrix(int matrix[][MAX_COLS], size_t rows, size_t cols);
 void printMatrix(int matrix[][MAX_COLS], size_t rows, size_t cols);
@@ -24,10 +24,10 @@ void matrixMultiplyNum  (int matrix[][MAX_COLS], size_t rows, size_t cols, int n
 
 
 int main() {
-    size_t rows1 = inputSize(MAX_ROWS, 1, "ROWS");
-    size_t cols1 = inputSize(MAX_COLS, 1, "COLS");
-    size_t rows2 = inputSize(MAX_ROWS, 2, "ROWS");
-    size_t cols2 = inputSize(MAX_COLS, 2, "COLS");
+    unsigned int rows1 = inputSize(MAX_ROWS, 1, "ROWS");
+    unsigned int cols1 = inputSize(MAX_COLS, 1, "COLS");
+    unsigned int rows2 = inputSize(MAX_ROWS, 2, "ROWS");
+    unsigned int cols2 = inputSize(MAX_COLS, 2, "COLS");
 
     putchar('\n');
     putchar('\n');
@@ -72,37 +72,29 @@ int main() {
 }
 
 
-void manageInput() {
-    while (1) {
-        int c = getchar();
-
-        if (c == '\n' || c == EOF) {
-            break;
-        }
-    }
-}
-
-
-size_t inputSize(size_t MAX, int counter, char name[]) {
-    size_t size = 0;
+unsigned int inputSize(unsigned int MAX, int counter, char name[]) {
+    unsigned int size = 0;
 
     do {
         printf("Enter the %s size of matrix %d: ", name, counter);
 
-        if (scanf("%zu", &size) != 1) {
+        if (scanf("%u", &size) != 1) {
             printf("Standard Input Error!\n");
 
             exit(EXIT_FAILURE);
         }
-
-        manageInput();
     } while (size == 0 || size > MAX);
 
     return size;
 }
 
-void inputMatrix(int matrix[][MAX_COLS], size_t rows, size_t cols) {
-    if (rows == 0 || rows > MAX_ROWS || cols == 0 || cols > MAX_COLS) {
+int validateSize(unsigned int MAX, unsigned int size) {
+    return  size != 0 && size <= MAX;
+}
+
+
+void inputMatrix(int matrix[][MAX_COLS], unsigned int rows, unsigned int cols) {
+    if (!validateSizes(MAX_ROWS, rows) || !validateSizes(MAX_COLS, cols)) {
         printf("Invalid sizes for the matrix!\n");
 
         exit(EXIT_FAILURE);
@@ -110,19 +102,15 @@ void inputMatrix(int matrix[][MAX_COLS], size_t rows, size_t cols) {
 
     printf("Enter the elements of the matrix:\n");
 
-    for (size_t i = 0; i < rows; ++i) {
-        for (size_t j = 0; j < cols; ++j) {
-            if (scanf("%d", &matrix[i][j]) != 1) {
-                printf("Standard Input Error!\n");
-
-                exit(EXIT_FAILURE);
-            }
+    for (unsigned int i = 0; i < rows; ++i) {
+        for (unsigned int j = 0; j < cols; ++j) {
+            scanf("%d", &(matrix[i][j]));
         }
     }
 }
 
-void printMatrix(int matrix[][MAX_COLS], size_t rows, size_t cols) {
-    if (rows == 0 || rows > MAX_ROWS || cols == 0 || cols > MAX_COLS) {
+void printMatrix(int matrix[][MAX_COLS], unsigned int rows, unsigned int cols) {
+    if (!validateSizes(MAX_ROWS, rows) || !validateSizes(MAX_COLS, cols)) {
         printf("Invalid sizes for the matrix!\n");
 
         exit(EXIT_FAILURE);
@@ -130,8 +118,8 @@ void printMatrix(int matrix[][MAX_COLS], size_t rows, size_t cols) {
 
     printf("The elements of the matrix are:\n");
 
-    for (size_t i = 0; i < rows; ++i) {
-        for (size_t j = 0; j < cols; ++j) {
+    for (unsigned int i = 0; i < rows; ++i) {
+        for (unsigned int j = 0; j < cols; ++j) {
             printf("%d ", matrix[i][j]);
         }
 
@@ -140,22 +128,30 @@ void printMatrix(int matrix[][MAX_COLS], size_t rows, size_t cols) {
 }
 
 
-void matrixAddition(int matrix1[][MAX_COLS], int matrix2[][MAX_COLS], int matrix[][MAX_COLS], size_t rows1, size_t cols1, size_t rows2, size_t cols2) {
-    if (rows1 == 0 || rows1 > MAX_ROWS || cols1 == 0 || cols1 > MAX_COLS || rows1 != rows2 || cols1 != cols2) {
+void matrixAddition(int matrix1[][MAX_COLS], int matrix2[][MAX_COLS], int matrix[][MAX_COLS], unsigned int rows1, unsigned int cols1, unsigned int rows2, unsigned int cols2) {
+    if (
+        !validateSizes(MAX_ROWS, rows1) || !validateSizes(MAX_COLS, cols1)  ||
+        !validateSizes(MAX_ROWS, rows2) || !validateSizes(MAX_COLS, cols2)  ||
+        rows1 != rows2 || cols1 != cols2
+    ) {
         printf("Invalid sizes for the matrices!\n");
 
         exit(EXIT_FAILURE);
     }
 
-    for (size_t i = 0; i < rows1; ++i) {
-        for (size_t j = 0; j < cols1; ++j) {
+    for (unsigned int i = 0; i < rows1; ++i) {
+        for (unsigned int j = 0; j < cols1; ++j) {
             matrix[i][j] = matrix1[i][j] + matrix2[i][j];
         }
     }
 }
 
 void matrixSubtraction(int matrix1[][MAX_COLS], int matrix2[][MAX_COLS], int matrix[][MAX_COLS], size_t rows1, size_t cols1, size_t rows2, size_t cols2) {
-    if (rows1 == 0 || rows1 > MAX_ROWS || cols1 == 0 || cols1 > MAX_COLS || rows1 != rows2 || cols1 != cols2) {
+    if (
+        !validateSizes(MAX_ROWS, rows1) || !validateSizes(MAX_COLS, cols1)  ||
+        !validateSizes(MAX_ROWS, rows2) || !validateSizes(MAX_COLS, cols2)  ||
+        rows1 != rows2 || cols1 != cols2
+    ) {
         printf("Invalid sizes for the matrices!\n");
 
         exit(EXIT_FAILURE);
@@ -169,7 +165,7 @@ void matrixSubtraction(int matrix1[][MAX_COLS], int matrix2[][MAX_COLS], int mat
 }
 
 void matrixMultiplyNum(int matrix[][MAX_COLS], size_t rows, size_t cols, int number) {
-    if (rows == 0 || rows > MAX_ROWS || cols == 0 || cols > MAX_COLS) {
+    if (!validateSizes(MAX_ROWS, rows) || !validateSizes(MAX_COLS, cols)) {
         printf("Invalid sizes for the matrix!\n");
 
         exit(EXIT_FAILURE);

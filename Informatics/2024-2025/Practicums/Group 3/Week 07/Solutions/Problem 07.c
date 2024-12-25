@@ -35,7 +35,7 @@ int main() {
 }
 
 void inputArray(unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         return;
@@ -47,7 +47,7 @@ void inputArray(unsigned int array[], size_t size) {
 }
 
 void printArray(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         return;
@@ -61,7 +61,7 @@ void printArray(const unsigned int array[], size_t size) {
 }
 
 void printPairs(const unsigned int array[], size_t size, unsigned int m) {
-    if (size > MAX_CAPACITY) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         return;

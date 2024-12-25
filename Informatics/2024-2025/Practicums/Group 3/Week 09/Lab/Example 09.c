@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+#define PI_M    3.14        // Macro
+
+const double PI_V = 3.14;   // Variable
+
 
 void swapFake(int  a, int  b);
 void swapReal(int* a, int* b);
@@ -62,8 +66,14 @@ void samples() {
     printf("Referencing pointer 1 is: %d\n", *p1);
     printf("Referencing pointer 2 is: %d\n", *p2);
 
-    const int* pointer1 = &a;   // pointer1 = &b;
-    int* const pointer2 = &b;   // *pointer2 = 1;
+    const int e = 1;    // Constant Variable or Constant
+    int const f = 1;    // Constant Variable or Constant
+
+    const int* pointer1 = &a;   pointer1 = &b; // *pointer1 = 10;   (Impossible)
+    int* const pointer2 = &b;   *pointer2 = 1; // pointer2 = &a;    (Impossible)
 
     const int* const pointer3 = &c;
+
+    // pointer3     = &b; (Impossible)
+    // *pointer3    = 10; (Impossible)
 }

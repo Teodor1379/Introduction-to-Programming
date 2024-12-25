@@ -40,7 +40,7 @@ int main() {
 }
 
 void inputArray(unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         return;
@@ -54,7 +54,7 @@ void inputArray(unsigned int array[], size_t size) {
 }
 
 void printArray(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         return;
@@ -70,7 +70,7 @@ void printArray(const unsigned int array[], size_t size) {
 }
 
 int isSequenceIncreasing(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         exit(EXIT_FAILURE);
@@ -88,7 +88,7 @@ int isSequenceIncreasing(const unsigned int array[], size_t size) {
 }
 
 int isSequenceDecreasing(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         exit(EXIT_FAILURE);
@@ -106,7 +106,7 @@ int isSequenceDecreasing(const unsigned int array[], size_t size) {
 }
 
 int isSequenceStrictlyIncreasing(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         exit(EXIT_FAILURE);
@@ -124,7 +124,7 @@ int isSequenceStrictlyIncreasing(const unsigned int array[], size_t size) {
 }
 
 int isSequenceStrictlyDecreasing(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         exit(EXIT_FAILURE);
