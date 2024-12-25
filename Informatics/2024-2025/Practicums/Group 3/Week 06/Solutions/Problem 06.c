@@ -43,5 +43,6 @@ int main() {
 
     showProgressionInformation(a, d, n);
 
+
     return 0;
 }
