@@ -1,3 +1,5 @@
+#include <stdint.h>
+
 #include <stdio.h>
 
 
@@ -14,8 +16,8 @@ void printNumberBinary(char number) {
     while (number > 0) {
         array[counter] = number % 2;
 
-        number  =   number      / 2;
-        counter =   counter     - 1;
+        number  = number    / 2;
+        counter = counter   - 1;
     }
 
     for (unsigned int i = 0; i < SIZE; ++i) {
@@ -28,11 +30,11 @@ void printNumberBinary(char number) {
 
 
 int main() {
-    unsigned int number = 0;
+    uint8_t number = 0;
 
     printf("Enter the number: ");
 
-    if (scanf("%u", &number) != 1) {
+    if (scanf("%hhu", &number) != 1) {
         puts("Invalid Input!");
 
         return 1;
