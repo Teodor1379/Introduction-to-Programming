@@ -2,10 +2,6 @@
 
 
 
-int factorial(int number);
-
-
-
 int min2(int number1, int number2);
 int min3(int number1, int number2, int number3);
 
@@ -15,9 +11,6 @@ int max3(int number1, int number2, int number3);
 
 
 int main() {
-    printf("The factorial of 9 is: %d\n",   factorial(9));
-
-
     printf("The min of 2 arguments is: %d\n",   min2(1, 3)      );
     printf("The min of 3 arguments is: %d\n",   min3(1, 3, 7)   );
 
@@ -26,18 +19,6 @@ int main() {
 
 
     return 0;
-}
-
-
-
-int factorial(int number) {
-    int result = 1;
-
-    for (int i = 1; i <= number; ++i) {
-        result = result * i;
-    }
-
-    return result;
 }
 
 
