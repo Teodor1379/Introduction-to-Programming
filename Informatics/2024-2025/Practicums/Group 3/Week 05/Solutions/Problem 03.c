@@ -1,11 +1,18 @@
 #include <stdio.h>
 
+
+
 int main() {
     unsigned int n = 0;
 
     printf("Enter the number N: ");
 
-    scanf("%u", &n);
+    if (scanf("%u", &n) != 1) {
+        puts("Invalid Input!");
+
+        return 1;
+    }
+
 
     unsigned int sumOdds    =   0;
     unsigned int sumEvens   =   0;
@@ -17,6 +24,7 @@ int main() {
 
     printf("The sum of the even numbers is: %u\n", sumOdds );
     printf("The sum of the odd  numbers is: %u\n", sumEvens);
+
 
     return 0;
 }
