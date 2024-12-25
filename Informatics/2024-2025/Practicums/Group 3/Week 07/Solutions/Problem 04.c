@@ -116,6 +116,7 @@ void printArray(const unsigned int array[], unsigned int size) {
 }
 
 
+
 void reverseArraySolution1(unsigned int array[], unsigned int size) {
     if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
