@@ -1,11 +1,18 @@
 #include <stdio.h>
 
+
+
 int main() {
     unsigned int    n   =   0;
 
     printf("Enter the number N: ");
 
-    scanf("%u", &n);
+    if (scanf("%u", &n) != 1) {
+        puts("Invalid Input!");
+
+        return 1;
+    }
+
 
     unsigned int    sum     =   0;
     unsigned int    product =   1;
@@ -19,6 +26,7 @@ int main() {
 
     printf("The sum     of the divisors of N is: %u\n", sum     );
     printf("The product of the divisors of N is: %u\n", product );
+
 
     return 0;
 }
