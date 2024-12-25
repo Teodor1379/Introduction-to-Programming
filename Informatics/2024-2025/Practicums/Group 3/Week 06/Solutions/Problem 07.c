@@ -8,6 +8,14 @@
 
 
 
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
 double findSumProgression(double a, double q, unsigned int n) {
     return a * (1 - pow(q, n)) / (1 - q);
 }
@@ -30,8 +38,8 @@ int main() {
     double  a   =   0.0;
     double  q   =   0.0;
 
-    printf("Enter the number A: "); if (scanf("%lf", &a) != 1)  { puts("Invalid Input!");   return 1;   }
-    printf("Enter the number Q: "); if (scanf("%lf", &q) != 1)  { puts("Invalid Input!");   return 1;   }
+    printf("Enter the number A: "); if (scanf("%lf", &a) != 1)  { puts("Invalid Input!");   clearStandardInput();   }
+    printf("Enter the number Q: "); if (scanf("%lf", &q) != 1)  { puts("Invalid Input!");   clearStandardInput();   }
 
 
     if (fabs(q) < EPSILON) {
@@ -49,7 +57,7 @@ int main() {
         if (scanf("%u", &n) != 1) {
             puts("Invalid Input!");
 
-            return 1;
+            clearStandardInput();
         }
     } while (n == 0);
 

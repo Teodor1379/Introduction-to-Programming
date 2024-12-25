@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+
+
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
 void showCanonical(unsigned int number) {
     printf("The canonical of the number is: ");
 
@@ -14,18 +24,24 @@ void showCanonical(unsigned int number) {
     putchar('\n');
 }
 
+
+
 int main() {
     unsigned int n = 0;
 
     do {
         printf("Enter the number N: ");
 
-        scanf("%u", &n);
+        if (scanf("%u", &n) != 1) {
+            puts("Invalid Input!");
 
-        while (getchar() != '\n');
+            clearStandardInput();
+        }
     } while (n < 2);
 
+
     showCanonical(n);
+
 
     return 0;
 }

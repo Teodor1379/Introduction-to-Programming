@@ -2,6 +2,14 @@
 
 
 
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
 double findSumProgression(double a, double d, unsigned int n) {
     return (2 * a + (n - 1) * d) * n / 2;
 }
@@ -24,8 +32,8 @@ int main() {
     double  a   =   0.0;
     double  d   =   0.0;
 
-    printf("Enter the number A: "); if (scanf("%lf", &a) != 1)  { puts("Invalid Input!");   return 1;   }
-    printf("Enter the number D: "); if (scanf("%lf", &d) != 1)  { puts("Invalid Input!");   return 1;   }
+    printf("Enter the number A: "); if (scanf("%lf", &a) != 1)  { puts("Invalid Input!");   clearStandardInput();   }
+    printf("Enter the number D: "); if (scanf("%lf", &d) != 1)  { puts("Invalid Input!");   clearStandardInput();   }
 
 
     unsigned int n  =   0;
@@ -36,7 +44,7 @@ int main() {
         if (scanf("%u", &n) != 1) {
             puts("Invalid Input!");
 
-            return 1;
+            clearStandardInput();
         }
     } while (n == 0);
 
