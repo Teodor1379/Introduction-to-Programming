@@ -76,7 +76,7 @@ unsigned int readSize() {
         if (inputArgument != 1) {
             clearStandardInput();
         }
-    } while (inputArgument != 1 || size == 0 || size > 100);
+    } while (inputArgument != 1 || size == 0 || size > MAX_CAPACITY);
 
     return size;
 }

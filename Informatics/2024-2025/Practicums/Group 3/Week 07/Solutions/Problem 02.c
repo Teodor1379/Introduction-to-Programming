@@ -1,32 +1,39 @@
-#include <stddef.h>
 #include <stdlib.h>
 
 #include <stdio.h>
 
+
+
 #define MAX_CAPACITY 100
 
-void inputArray(        unsigned int array[], size_t size);
-void printArray(const   unsigned int array[], size_t size);
-int  equalArray(const   unsigned int array[], size_t size);
 
-unsigned int findMinNumber1(const   unsigned int array[], size_t size);
-unsigned int findMaxNumber1(const   unsigned int array[], size_t size);
 
-unsigned int findMinNumber2(const   unsigned int array[], size_t size);
-unsigned int findMaxNumber2(const   unsigned int array[], size_t size);
+void clearStandardInput();
+
+
+unsigned int    readElem();
+unsigned int    readSize();
+
+
+
+void inputArray(        unsigned int array[], unsigned int size);
+void printArray(const   unsigned int array[], unsigned int size);
+int  equalArray(const   unsigned int array[], unsigned int size);
+
+
+
+unsigned int findMinNumber1(const   unsigned int array[], unsigned int size);
+unsigned int findMaxNumber1(const   unsigned int array[], unsigned int size);
+
+unsigned int findMinNumber2(const   unsigned int array[], unsigned int size);
+unsigned int findMaxNumber2(const   unsigned int array[], unsigned int size);
+
+
 
 int main() {
     unsigned int array[MAX_CAPACITY] = { 0 };
 
-    size_t size = 0;
-
-    do {
-        printf("Enter the size of the array: ");
-
-        scanf("%zu", &size);
-
-        while (getchar() != '\n');
-    } while (size == 0 || size > 100);
+    unsigned int size = readSize();
 
     inputArray(array, size);
     printArray(array, size);
@@ -39,28 +46,88 @@ int main() {
     return 0;
 }
 
-void inputArray(unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+
+
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
+unsigned int readElem() {
+    unsigned int elem   =   0;
+    int inputArgument   =   0;
+
+    do {
+        inputArgument = scanf("%u", &elem);
+
+        if (inputArgument != 1) {
+            clearStandardInput();
+        }
+    } while (inputArgument != 1);
+
+    return elem;
+}
+
+unsigned int readSize() {
+    unsigned int size   =   0;
+    int inputArgument   =   0;
+
+    do {
+        printf("Enter the size of the array: ");
+
+        inputArgument = scanf("%u", &size);
+
+        if (inputArgument != 1) {
+            clearStandardInput();
+        }
+    } while (inputArgument != 1 || size == 0 || size > MAX_CAPACITY);
+
+    return size;
+}
+
+
+
+void inputArray(unsigned int array[], unsigned int size) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
-        return;
+        exit(EXIT_FAILURE);
     }
 
     printf("Enter the elements of the array: ");
 
-    for (size_t i = 0; i < size; ++i) {
-        scanf("%u", &array[i]);
+    for (unsigned int i = 0; i < size; ++i) {
+        array[i] = readElem();
     }
 }
 
-int equalArray(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
-        printf("Invalid size for the array!\n");
+void printArray(const unsigned int array[], unsigned int size) {
+    if (size == 0 || size > MAX_CAPACITY) {
+        printf("Invalid size for the array!");
 
-        return 0;
+        exit(EXIT_FAILURE);
     }
 
-    for (size_t i = 0; i < size - 1; ++i) {
+    printf("The elements of the array are: ");
+
+    for (unsigned int i = 0; i < size; ++i) {
+        printf("%u ", array[i]);
+    }
+
+    putchar('\n');
+}
+
+int equalArray(const unsigned int array[], unsigned int size) {
+    if (size == 0 || size > MAX_CAPACITY) {
+        printf("Invalid size for the array!\n");
+
+        exit(EXIT_FAILURE);
+    }
+
+    for (unsigned int i = 0; i < size - 1; ++i) {
         if (array[i] != array[i + 1]) {
             return 0;
         }
@@ -69,24 +136,10 @@ int equalArray(const unsigned int array[], size_t size) {
     return 1;
 }
 
-void printArray(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
-        printf("Invalid size for the array!");
 
-        return;
-    }
 
-    printf("The elements of the array are: ");
-
-    for (size_t i = 0; i < size; ++i) {
-        printf("%u ", array[i]);
-    }
-
-    putchar('\n');
-}
-
-unsigned int findMinNumber1(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+unsigned int findMinNumber1(const unsigned int array[], unsigned int size) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         exit(EXIT_FAILURE);
@@ -94,7 +147,7 @@ unsigned int findMinNumber1(const unsigned int array[], size_t size) {
 
     unsigned int minNumber = array[0];
 
-    for (size_t i = 1; i < size; ++i) {
+    for (unsigned int i = 1; i < size; ++i) {
         if (minNumber > array[i]) {
             minNumber = array[i];
         }
@@ -103,16 +156,16 @@ unsigned int findMinNumber1(const unsigned int array[], size_t size) {
     return minNumber;
 }
 
-unsigned int findMaxNumber1(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+unsigned int findMaxNumber1(const unsigned int array[], unsigned int size) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
-        return (unsigned int)(-1);
+        exit(EXIT_FAILURE);
     }
 
     unsigned int maxNumber = array[0];
 
-    for (size_t i = 1; i < size; ++i) {
+    for (unsigned int i = 1; i < size; ++i) {
         if (maxNumber < array[i]) {
             maxNumber = array[i];
         }
@@ -121,30 +174,27 @@ unsigned int findMaxNumber1(const unsigned int array[], size_t size) {
     return maxNumber;
 }
 
-unsigned int findMinNumber2(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+unsigned int findMinNumber2(const unsigned int array[], unsigned int size) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
-        return (unsigned int)(-1);
+        exit(EXIT_FAILURE);
     }
     
     if (equalArray(array, size)) {
         return array[0];
     }
 
-    size_t minIndex1 = 0;
-    size_t minIndex2 = -1;
+    unsigned int minIndex1 =  0 ;
+    unsigned int minIndex2 = -1 ;
 
-    for (size_t i = 1; i < size; ++i) {
+    for (unsigned int i = 1; i < size; ++i) {
         if (array[minIndex1] > array[i]) {
             minIndex2 = minIndex1;
             minIndex1 = i;
         }
 
-        int condition1 = (minIndex2 == (size_t)(-1));
-        int condition2 = (array[i] < array[minIndex2]);
-
-        if (array[minIndex1] < array[i] && (condition1 || condition2)) {
+        if (array[minIndex1] < array[i] && (minIndex2 == (unsigned int)(-1) || array[i] < array[minIndex2])) {
             minIndex2 = i;
         }
     }
@@ -152,30 +202,27 @@ unsigned int findMinNumber2(const unsigned int array[], size_t size) {
     return array[minIndex2];
 }
 
-unsigned int findMaxNumber2(const unsigned int array[], size_t size) {
-    if (size > MAX_CAPACITY) {
+unsigned int findMaxNumber2(const unsigned int array[], unsigned int size) {
+    if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
-        return (unsigned int)(-1);
+        exit(EXIT_FAILURE);
     }
 
     if (equalArray(array, size)) {
         return array[0];
     }
 
-    size_t maxIndex1 = 0;
-    size_t maxIndex2 = -1;
+    unsigned int maxIndex1 =  0 ;
+    unsigned int maxIndex2 = -1 ;
 
-    for (size_t i = 1; i < size; ++i) {
+    for (unsigned int i = 1; i < size; ++i) {
         if (array[maxIndex1] < array[i]) {
             maxIndex2 = maxIndex1;
             maxIndex1 = i;
         }
 
-        int condition1 = (maxIndex2 == (size_t)(-1));
-        int condition2 = (array[i] > array[maxIndex2]);
-
-        if (array[maxIndex1] > array[i] && (condition1 || condition2)) {
+        if (array[maxIndex1] > array[i] && (maxIndex2 == (unsigned int)(-1) || (array[i] > array[maxIndex2]))) {
             maxIndex2 = i;
         }
     }
