@@ -2,6 +2,14 @@
 
 
 
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
 int isLeapYear(long long year) {
     return  (year > 0)                  &&
             (   (year % 400 == 0)       ||
@@ -42,7 +50,7 @@ int main() {
     if (scanf("%lld %lld %lld", &day, &month, &year) != 3) {
         puts("Invalid Input!");
 
-        return 1;
+        clearStandardInput();
     }
 
 

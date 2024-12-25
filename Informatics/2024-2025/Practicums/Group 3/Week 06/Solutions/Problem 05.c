@@ -2,6 +2,14 @@
 
 
 
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
 int sameDigits(long long number) {
     if (number < 10) {
         return 0;
@@ -48,8 +56,8 @@ int main() {
     long long   b   =   0;
 
     do {
-        printf("Enter the number A: "); if (scanf("%lld", &a) != 1) { puts("Invalud Input!");   return 1;   }
-        printf("Enter the number B: "); if (scanf("%lld", &b) != 1) { puts("Invalid Input!");   return 1;   }
+        printf("Enter the number A: "); if (scanf("%lld", &a) != 1) { puts("Invalud Input!");   clearStandardInput();   }
+        printf("Enter the number B: "); if (scanf("%lld", &b) != 1) { puts("Invalid Input!");   clearStandardInput();   }
     } while (a > b);
 
     findNumbersSameDigits(a, b);

@@ -2,6 +2,14 @@
 
 
 
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
 double absoluteValue(double value) {
     if (value < 0) {
         return -value;
@@ -20,7 +28,7 @@ int main() {
     if (scanf("%lf", &value) != 1) {
         puts("Invalid Input!");
 
-        return 1;
+        clearStandardInput();
     }
 
 
