@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+
+
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
 int conditionSumDigits(unsigned int number) {
     if (number < 100) {
         return 0;
@@ -24,18 +34,24 @@ int conditionSumDigits(unsigned int number) {
     return 1;
 }
 
+
+
 int main() {
     unsigned int number = 0;
 
     do {
         printf("Enter number: ");
 
-        scanf("%u", &number);
+        if (scanf("%u", &number) != 1) {
+            puts("Invalid Input!");
 
-        while (getchar() != '\n');
+            clearStandardInput();
+        }
     } while (number == 0);
 
+
     printf("%s\n", conditionSumDigits(number) ? "Yes" : "No");
+
 
     return 0;
 }
