@@ -1,11 +1,18 @@
 #include <stdio.h>
 
+
+
 int main() {
     unsigned int number = 0;
 
     printf("Enter the number: ");
 
-    scanf("%u", &number);
+    if (scanf("%u", &number) != 1) {
+        puts("Invalid Input!");
+
+        return 1;
+    }
+
 
     unsigned int reversed   =   0       ;
     unsigned int temporary  =   number  ;
@@ -21,6 +28,7 @@ int main() {
     } else {
         puts("Invalid");
     }
+
 
     return 0;
 }
