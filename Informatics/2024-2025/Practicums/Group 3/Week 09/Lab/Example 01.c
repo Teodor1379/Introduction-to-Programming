@@ -3,21 +3,28 @@
 #include <stdio.h>
 
 
+
 #define MAX_CAPACITY 100
 
 
+
 void clearStandardInput();
+
 
 
 int             readElem();
 unsigned int    readSize();
 
 
-void inputArray(int array[], unsigned int size);
-void printArray(int array[], unsigned int size);
+
+void inputArray(        int array[], unsigned int size);
+void printArray(const   int array[], unsigned int size);
 
 
-int containsAll(int array[], unsigned int size);
+
+// Selection Sort
+void sortArray(int array[], unsigned int size);
+
 
 
 int main() {
@@ -28,10 +35,13 @@ int main() {
     inputArray(array, size);
     printArray(array, size);
 
-    printf("Are all numbers even? %s\n", containsAll(array, size) ? "Yes" : "No");
+    sortArray(array, size);
+
+    printArray(array, size);
 
     return 0;
 }
+
 
 
 void clearStandardInput() {
@@ -39,6 +49,7 @@ void clearStandardInput() {
 
     while ((c = getchar()) && c != '\n' && c != EOF);
 }
+
 
 
 int readElem() {
@@ -74,6 +85,7 @@ unsigned int readSize() {
 }
 
 
+
 void inputArray(int array[], unsigned int size) {
     assert(size != 0            );
     assert(size <= MAX_CAPACITY );
@@ -85,7 +97,7 @@ void inputArray(int array[], unsigned int size) {
     }
 }
 
-void printArray(int array[], unsigned int size) {
+void printArray(const int array[], unsigned int size) {
     assert(size != 0            );
     assert(size <= MAX_CAPACITY );
 
@@ -99,15 +111,24 @@ void printArray(int array[], unsigned int size) {
 }
 
 
-int containsAll(int array[], unsigned int size) {
+
+void sortArray(int array[], unsigned int size) {
     assert(size != 0            );
     assert(size <= MAX_CAPACITY );
 
-    for (unsigned int i = 0; i < size; ++i) {
-        if (array[i] % 2 != 0) {
-            return 0;
+    for (unsigned int i = 0; i < size - 1; ++i) {
+        unsigned int minIndex = i;
+
+        for (unsigned int j = i + 1; j < size; ++j) {
+            if (array[j] < array[i]) {
+                minIndex = j;
+            }
+        }
+
+        if (minIndex != i) {
+            int temp        = array[i]          ;
+            array[i]        = array[minIndex]   ;
+            array[minIndex] = temp              ;
         }
     }
-
-    return 1;
 }
