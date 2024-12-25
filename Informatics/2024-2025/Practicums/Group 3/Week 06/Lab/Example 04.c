@@ -16,8 +16,8 @@ int main() {
     int x   =   0;
     int y   =   0;
 
-    printf("Enter the number X: "); scanf("%d", &x);
-    printf("Enter the number Y: "); scanf("%d", &y);
+    printf("Enter the number X: "); if (scanf("%d", &x) != 1)   { puts("Invalid Input!");   return 1;   }
+    printf("Enter the number Y: "); if (scanf("%d", &y) != 1)   { puts("Invalid Input!");   return 1;   }
 
     swap(&x, &y);
 
