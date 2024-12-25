@@ -1,23 +1,47 @@
 #include <stdio.h>
 
+
+
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
 int isEvenDigit (unsigned int number);
 int isOddDigit  (unsigned int number);
 
 int isDigitRed  (unsigned int number, int flag);
 int isDigitBlack(unsigned int number, int flag);
 
+
+
 unsigned int countDigits(unsigned int number);
+
+
 
 unsigned int reversedNumber(unsigned int number);
 
+
+
 unsigned int buildNumber(unsigned int number, char colour);
 
+
+
 int isPalindrome(unsigned int number);
+
+
 
 int calculateNumberRedDigits    (unsigned int number);
 int calculateNumberBlackDigits  (unsigned int number);
 
+
+
 void printInformationNumbers(unsigned int number);
+
+
 
 int main() {
     unsigned int number = 0;
@@ -25,15 +49,19 @@ int main() {
     do {
         printf("Eter the number: ");
 
-        scanf("%u", &number);
-
-        while (getchar() != '\n');
+        if (scanf("%u", &number) != 1) {
+            clearStandardInput();
+        }
     } while (number == 0);
 
+
     printInformationNumbers(number);
+
     
     return 0;
 }
+
+
 
 int isEvenDigit(unsigned int number) {
     return  number < 10     &&
@@ -53,6 +81,8 @@ int isDigitBlack(unsigned int number, int flag) {
     return isEvenDigit(number) && flag == 0;
 }
 
+
+
 unsigned int countDigits(unsigned int number) {
     unsigned int result = 0;
 
@@ -63,6 +93,8 @@ unsigned int countDigits(unsigned int number) {
 
     return result;
 }
+
+
 
 unsigned int reversedNumber(unsigned int number) {
     unsigned int reversed   =   0;
@@ -75,6 +107,8 @@ unsigned int reversedNumber(unsigned int number) {
 
     return reversed;
 }
+
+
 
 unsigned int buildNumber(unsigned int number, char colour) {
     unsigned int result = 0;
@@ -96,6 +130,8 @@ unsigned int buildNumber(unsigned int number, char colour) {
     return reversedNumber(result);
 }
 
+
+
 int isPalindrome(unsigned int number) {
     unsigned int temporary  =   number;
     unsigned int reversed   =   0;
@@ -108,6 +144,8 @@ int isPalindrome(unsigned int number) {
 
     return temporary == reversed;
 }
+
+
 
 int calculateNumberRedDigits(unsigned int number) {
     unsigned int result = 0;
@@ -138,6 +176,8 @@ int calculateNumberBlackDigits(unsigned int number) {
 
     return result % 2 == 1;
 }
+
+
 
 void printInformationNumbers(unsigned int number) {
     unsigned int number1    =   buildNumber(number, 'R');
