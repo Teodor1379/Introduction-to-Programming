@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+
+
 void solutionOne    ();
 void solutionTwo    ();
 void solutionThree  ();
@@ -9,6 +11,8 @@ void solutionSix    ();
 void solutionSeven  ();
 void solutionEight  ();
 void solutionNine   ();
+
+
 
 int main() {
     solutionOne     ();
@@ -30,7 +34,11 @@ void solutionOne() {
     do {
         printf("Enter the number N: ");
 
-        scanf("%lld", &n);
+        if (scanf("%lld", &n) != 1) {
+            puts("Invalid Input!");
+
+            return;
+        }
     } while (n < 0);
 
     long long result = 0;
@@ -48,7 +56,11 @@ void solutionTwo() {
     do {
         printf("Enter the number N: ");
 
-        scanf("%lld", &n);
+        if (scanf("%lld", &n) != 1) {
+            puts("Invalid Input!");
+
+            return;
+        }
     } while (n < 0);
 
     long long result = 0;
@@ -66,7 +78,11 @@ void solutionThree() {
     do {
         printf("Enter the number N: ");
 
-        scanf("%lld", &n);
+        if (scanf("%lld", &n) != 1) {
+            puts("Invalid Input!");
+
+            return;
+        }
     } while (n < 0);
 
     long long result = 0;
@@ -84,7 +100,11 @@ void solutionFour() {
     do {
         printf("Enter the number N: ");
 
-        scanf("%lld", &n);
+        if (scanf("%lld", &n) != 1) {
+            puts("Invalid Input!");
+
+            return;
+        }
     } while (n < 0);
 
     long long result = 0;
@@ -102,7 +122,11 @@ void solutionFive() {
     do {
         printf("Enter the number N: ");
 
-        scanf("%lld", &n);
+        if (scanf("%lld", &n) != 1) {
+            puts("Invalid Input!");
+
+            return;
+        }
     } while (n < 0);
 
     long long result = 0;
@@ -120,7 +144,11 @@ void solutionSix() {
     do {
         printf("Enter the number N: ");
 
-        scanf("%lld", &n);
+        if (scanf("%lld", &n) != 1) {
+            puts("Invalid Input!");
+
+            return;
+        }
     } while (n < 0);
 
     long long result = 0;
@@ -138,7 +166,11 @@ void solutionSeven() {
     do {
         printf("Enter the number N: ");
 
-        scanf("%lld", &n);
+        if (scanf("%lld", &n) != 1) {
+            puts("Invalid Input!");
+
+            return;
+        }
     } while (n < 0);
 
     long long result = 1;
@@ -156,7 +188,11 @@ void solutionEight() {
     do {
         printf("Enter the number N: ");
 
-        scanf("%lld", &n);
+        if (scanf("%lld", &n) != 1) {
+            puts("Invalid Input!");
+
+            return;
+        }
     } while (n < 0);
 
     long long result = 1;
@@ -174,7 +210,11 @@ void solutionNine() {
     do {
         printf("Enter the number N: ");
 
-        scanf("%lld", &n);
+        if (scanf("%lld", &n) != 1) {
+            puts("Invalid Input!");
+
+            return;
+        }
     } while (n < 0);
 
     long long result = 1;
