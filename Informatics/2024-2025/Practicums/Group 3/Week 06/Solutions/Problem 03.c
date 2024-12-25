@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+
+
 int isLeapYear(long long year) {
     return  (year > 0)                  &&
             (   (year % 400 == 0)       ||
@@ -28,6 +30,8 @@ int validateDate(long long day, long long month, long long year) {
     }
 }
 
+
+
 int main() {
     long long day   =   0;
     long long month =   0;
@@ -35,13 +39,19 @@ int main() {
 
     printf("Enter the date in format DD MM YYYY: ");
 
-    scanf("%lld %lld %lld", &day, &month, &year);
+    if (scanf("%lld %lld %lld", &day, &month, &year) != 3) {
+        puts("Invalid Input!");
+
+        return 1;
+    }
+
 
     if (validateDate(day, month, year)) {
         puts("The date is VALID!");
     } else {
         puts("The date is INVALID!");
     }
+
     
     return 0;
 }
