@@ -1,11 +1,18 @@
 #include <stdio.h>
 
+
+
 int main() {
     unsigned int number = 0;
 
     printf("Enter the number: ");
 
-    scanf("%u", &number);
+    if (scanf("%u", &number) != 1) {
+        puts("Invalid Input!");
+
+        return 1;
+    }
+
 
     if (number <= 1) {
         printf("The number is not prime!\n");
@@ -25,6 +32,7 @@ int main() {
             printf("The number is not prime!\n");
         }
     }
+
 
     return 0;
 }
