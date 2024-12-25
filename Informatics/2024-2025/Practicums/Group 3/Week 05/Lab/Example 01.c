@@ -1,11 +1,20 @@
 #include <stdio.h>
 
+
+
 const unsigned int MAX_LETTERS = 10;
+
+
 
 int main() {
     char c = '\0';
 
-    scanf("%c", &c);
+    if (scanf("%c", &c) != 1) {
+        puts("Invalid Input!");
+
+        return 1;
+    }
+
 
     unsigned int p = 0;
 
@@ -17,6 +26,7 @@ int main() {
     }
 
     putchar('\n');
+
 
     return 0;
 }
