@@ -1,32 +1,37 @@
-#include <stddef.h>
 #include <stdlib.h>
 
 #include <stdio.h>
 
+
+
 #define MAX_CAPACITY 100
 
-void inputArray(        unsigned int array[], size_t size);
-void printArray(const   unsigned int array[], size_t size);
 
-void printPairs(const unsigned int array[], size_t size, unsigned int m);
+
+void clearStandardInput();
+
+
+
+int             readElem();
+unsigned int    readNumb();
+unsigned int    readSize();
+
+
+
+void inputArray(        unsigned int array[], unsigned int size);
+void printArray(const   unsigned int array[], unsigned int size);
+
+
+
+void printPairs(const unsigned int array[], unsigned int size, unsigned int m);
+
+
 
 int main() {
     unsigned int array[MAX_CAPACITY] = { 0 };
 
-    size_t size = 0;
-
-    do {
-        printf("Enter the size: ");
-
-        scanf("%zu", &size);
-
-        while (getchar() != '\n');
-    } while (size == 0 || size > MAX_CAPACITY);
-
-    unsigned int m = 0;
-
-    printf("Enter the sum: ");
-    scanf("%u", &m);
+    unsigned int size   = readSize();
+    unsigned int m      = readNumb();
 
     inputArray(array, size);
     printPairs(array, size, m);
@@ -34,43 +39,110 @@ int main() {
     return 0;
 }
 
-void inputArray(unsigned int array[], size_t size) {
+
+
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
+int readElem() {
+    int elem            =   0;
+    int inputArgument   =   0;
+
+    do {
+        inputArgument = scanf("%d", &elem);
+
+        if (inputArgument != 1) {
+            clearStandardInput();
+        }
+    } while (inputArgument != 1);
+
+    return elem;
+}
+
+unsigned int readNumb() {
+    unsigned int numb   =   0;
+    int inputArgument   =   0;
+
+    do {
+        printf("Enter the sum: ");
+        
+        inputArgument = scanf("%u", &numb);
+
+        if (inputArgument != 1) {
+            clearStandardInput();
+        }
+    } while (inputArgument != 1);
+
+    return numb;
+}
+
+unsigned int readSize() {
+    unsigned int size   =   0;
+    int inputArgument   =   0;
+
+    do {
+        printf("Enter the size: ");
+
+        inputArgument = scanf("%u", &size);
+
+        if (inputArgument != 1) {
+            clearStandardInput();
+        }
+    } while (inputArgument != 1 || size == 0 || size > MAX_CAPACITY);
+
+    return size;
+}
+
+
+
+void inputArray(unsigned int array[], unsigned int size) {
     if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
-        return;
+        exit(EXIT_FAILURE);
     }
 
-    for (size_t i = 0; i < size; ++i) {
-        scanf("%u", &array[i]);
+    printf("Enter the elements of the array: ");
+
+    for (unsigned int i = 0; i < size; ++i) {
+        array[i] = readElem();
     }
 }
 
-void printArray(const unsigned int array[], size_t size) {
+void printArray(const unsigned int array[], unsigned int size) {
     if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
-        return;
+        exit(EXIT_FAILURE);
     }
 
-    for (size_t i = 0; i < size; ++i) {
+    printf("The elements of the array are: ");
+
+    for (unsigned int i = 0; i < size; ++i) {
         printf("%u ", array[i]);
     }
 
     putchar('\n');
 }
 
-void printPairs(const unsigned int array[], size_t size, unsigned int m) {
+
+
+void printPairs(const unsigned int array[], unsigned int size, unsigned int m) {
     if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
-        return;
+        exit(EXIT_FAILURE);
     }
 
     printf("All pairs are: ");
     
-    for (size_t i = 0; i < size; ++i) {
-        for (size_t j = i + 1; j < size; ++j) {
+    for (unsigned int i = 0; i < size; ++i) {
+        for (unsigned int j = i + 1; j < size; ++j) {
             if (array[i] + array[j] == m) {
                 printf("( %d %d ) ", array[i], array[j]);
             }
