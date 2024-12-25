@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+
+
 int main() {
     unsigned int number = 0;
 
