@@ -112,7 +112,7 @@ void inputArray(unsigned int array[], unsigned int size) {
     printf("Enter the elements of the array: ");
 
     for (unsigned int i = 0; i < size; ++i) {
-        scanf("%u", &array[i]);
+        array[i] = readElem();
     }
 }
 
