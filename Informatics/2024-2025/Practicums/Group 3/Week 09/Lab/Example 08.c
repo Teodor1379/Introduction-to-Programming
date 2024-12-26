@@ -22,9 +22,9 @@ void printArray(const   int array[], unsigned int size);
 
 
 
-int insertAtBeg(int array[], unsigned int* size, int element                    );
-int insertAtEnd(int array[], unsigned int* size, int element                    );
-int insertAtPos(int array[], unsigned int* size, int element, unsigned int pos  );
+int removeAtBeg(int array[], unsigned int* size                     );
+int removeAtEnd(int array[], unsigned int* size                     );
+int removeAtPos(int array[], unsigned int* size, unsigned int pos   );
 
 
 
@@ -36,14 +36,12 @@ int main() {
     inputArray(array, size);
     printArray(array, size);
 
+    if (removeAtBeg(array, &size))  { printArray(array, size);  }   else    { puts("Remove from array error!"); return 1;   }
+    if (removeAtEnd(array, &size))  { printArray(array, size);  }   else    { puts("Remove from array error!"); return 1;   }
 
-    if (insertAtBeg(array, &size, 1379))    { printArray(array, size);  }   else    { puts("Insert in array error!");    return 1;   }
-    if (insertAtEnd(array, &size, 1379))    { printArray(array, size);  }   else    { puts("Inserr in array error!");    return 1;   }
-
-    if (insertAtPos(array, &size, 9731,    0))  { printArray(array, size);  }   else    { puts("Insert in array error!");    return 1;   }
-    if (insertAtPos(array, &size, 9731, size))  { printArray(array, size);  }   else    { puts("Insert in array error!");    return 1;   }
-    if (insertAtPos(array, &size,    0,    3))  { printArray(array, size);  }   else    { puts("Insert in array error!");    return 1;   }
-
+    if (removeAtPos(array, &size,        0))    { printArray(array, size);  }   else    { puts("Remove from array error!"); return 1;   }
+    if (removeAtPos(array, &size, size - 1))    { printArray(array, size);  }   else    { puts("Remove from array error!"); return 1;   }
+    if (removeAtPos(array, &size,        3))    { printArray(array, size);  }   else    { puts("Remove from array error!"); return 1;   }
 
     return 0;
 }
@@ -59,18 +57,18 @@ void clearStandardInput() {
 
 
 int readElem() {
-    int elem            =   0;
+    int element         =   0;
     int inputArgument   =   0;
 
     do {
-        inputArgument = scanf("%d", &elem);
+        inputArgument = scanf("%d", &element);
 
         if (inputArgument != 1) {
             clearStandardInput();
         }
     } while (inputArgument != 1);
 
-    return elem;
+    return element;
 }
 
 unsigned int readSize() {
@@ -85,7 +83,7 @@ unsigned int readSize() {
         if (inputArgument != 1) {
             clearStandardInput();
         }
-    } while (inputArgument != 1);
+    } while (inputArgument != 1 || size == 0 || size > MAX_CAPACITY);
 
     return size;
 }
@@ -118,61 +116,45 @@ void printArray(const int array[], unsigned int size) {
 
 
 
-int insertAtBeg(int array[], unsigned int* size, int element) {
+int removeAtBeg(int array[], unsigned int* size) {
     assert(*size != 0           );
     assert(*size <= MAX_CAPACITY);
 
-    if (*size == MAX_CAPACITY) {
-        return 0;
+    for (unsigned int i = 1; i < *size; ++i) {
+        array[i - 1] = array[i];
     }
 
-    for (unsigned int i = *size; i > 0; --i) {
-        array[i] = array[i - 1];
-    }
-
-    array[0] = element;
-    
-    *size = *size + 1;
+    *size = *size - 1;
 
     return 1;
 }
 
-int insertAtEnd(int array[], unsigned int* size, int element) {
+int removeAtEnd(int array[], unsigned int* size) {
     assert(*size != 0           );
     assert(*size <= MAX_CAPACITY);
 
-    if (*size == MAX_CAPACITY) {
-        return 0;
-    }
+    array[*size - 1] = 0;
 
-    array[*size] = element;
-
-    *size = *size + 1;
+    *size = *size - 1;
 
     return 1;
 }
 
-int insertAtPos(int array[], unsigned int* size, int element, unsigned int pos) {
+int removeAtPos(int array[], unsigned int* size, unsigned int pos) {
     assert(*size != 0           );
     assert(*size <= MAX_CAPACITY);
     assert(pos < *size          );
 
-    if (*size == MAX_CAPACITY) {
-        return 0;
-    }
-
     if (pos == 0) {
-        return insertAtBeg(array, size, element);
+        return removeAtBeg(array, size);
     } else if (pos == *size - 1) {
-        return insertAtEnd(array, size, element);
+        return removeAtEnd(array, size);
     } else {
-        for (unsigned int i = *size; i > pos; --i) {
-            array[i] = array[i - 1];
+        for (unsigned int i = pos; i < *size - 1; ++i) {
+            array[i] = array[i + 1];
         }
 
-        array[pos] = element;
-
-        *size = *size + 1;
+        *size = *size - 1;
 
         return 1;
     }
