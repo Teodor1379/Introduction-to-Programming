@@ -17,8 +17,8 @@ unsigned int    readSize();
 
 
 
-void inputArray(int array[], unsigned int size);
-void printArray(int array[], unsigned int size);
+void inputArray(        int array[], unsigned int size);
+void printArray(const   int array[], unsigned int size);
 
 
 
@@ -26,24 +26,25 @@ void sortArray(int array[], unsigned int size);
 
 
 
-int findMajority(int array[], unsigned int size);
+void removeDuplicates(int array[], unsigned int* size, int result[]);
 
 
 
 int main() {
-    int array[MAX_CAPACITY] = { 0 };
+    int array1[MAX_CAPACITY] = { 0 };
+    int array2[MAX_CAPACITY] = { 0 };
 
     unsigned int size = readSize();
 
-    inputArray(array, size);
-    printArray(array, size);
+    inputArray(array1, size);
+    printArray(array1, size);
+    
+    removeDuplicates(array1, &size, array2);
 
-    printf("The majority element is: %d\n", findMajority(array, size));
+    printArray(array2, size);
 
     return 0;
 }
-
-
 
 void clearStandardInput() {
     int c = 0;
@@ -52,20 +53,19 @@ void clearStandardInput() {
 }
 
 
-
 int readElem() {
-    int elem            =   0;
+    int element         =   0;
     int inputArgument   =   0;
 
     do {
-        inputArgument = scanf("%d", &elem);
+        inputArgument = scanf("%d", &element);
 
         if (inputArgument != 1) {
             clearStandardInput();
         }
     } while (inputArgument != 1);
 
-    return elem;
+    return element;
 }
 
 unsigned int readSize() {
@@ -86,11 +86,10 @@ unsigned int readSize() {
 }
 
 
-
 void inputArray(int array[], unsigned int size) {
     assert(size != 0            );
     assert(size <= MAX_CAPACITY );
-    
+
     printf("Enter the elements of the array: ");
 
     for (unsigned int i = 0; i < size; ++i) {
@@ -98,7 +97,7 @@ void inputArray(int array[], unsigned int size) {
     }
 }
 
-void printArray(int array[], unsigned int size) {
+void printArray(const int array[], unsigned int size) {
     assert(size != 0            );
     assert(size <= MAX_CAPACITY );
 
@@ -132,11 +131,32 @@ void sortArray(int array[], unsigned int size) {
 
 
 
-int findMajority(int array[], unsigned int size) {
-    assert(size != 0            );
-    assert(size <= MAX_CAPACITY );
+void removeDuplicates(int array[], unsigned int* size, int result[]) {
+    assert(*size != 0           );
+    assert(*size <= MAX_CAPACITY);
 
-    sortArray(array, size);
+    sortArray(array, *size);
 
-    return array[size / 2];
+    unsigned int index1 = 0;
+    unsigned int index2 = 0;
+
+    while (index1 < *size) {
+        if (index2 == 0) {
+            result[index2] = array[index1];
+
+            index2 = index2 + 1;
+            index1 = index1 + 1;
+        } else {
+            if (array[index1] == result[index2 - 1]) {
+                index1 = index1 + 1;
+            } else {
+                result[index2] = array[index1];
+
+                index1 = index1 + 1;
+                index2 = index2 + 1;
+            }
+        }
+    }
+
+    *size = index2;
 }
