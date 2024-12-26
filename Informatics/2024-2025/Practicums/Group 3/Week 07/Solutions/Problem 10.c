@@ -1,32 +1,40 @@
-#include <stddef.h>
 #include <stdlib.h>
 
 #include <stdio.h>
 
+
+
 #define MAX_CAPACITY 100
 
-void inputArray(        unsigned int array[], size_t size);
-void printArray(const   unsigned int array[], size_t size);
 
-int isSequenceIncreasing(const unsigned int array[], size_t size);
-int isSequenceDecreasing(const unsigned int array[], size_t size);
 
-int isSequenceStrictlyIncreasing(const unsigned int array[], size_t size);
-int isSequenceStrictlyDecreasing(const unsigned int array[], size_t size);
+void clearStandardInput();
+
+
+
+unsigned int    readElem();
+unsigned int    readSize();
+
+
+
+void inputArray(        unsigned int array[], unsigned int size);
+void printArray(const   unsigned int array[], unsigned int size);
+
+
+
+int isSequenceIncreasing(const unsigned int array[], unsigned int size);
+int isSequenceDecreasing(const unsigned int array[], unsigned int size);
+
+int isSequenceStrictlyIncreasing(const unsigned int array[], unsigned int size);
+int isSequenceStrictlyDecreasing(const unsigned int array[], unsigned int size);
+
+
 
 int main() {
     unsigned int array[MAX_CAPACITY] = { 0 };
 
-    size_t size = 0;
-
-    do {
-        printf("Enter the size of the array: ");
-
-        scanf("%zu", &size);
-
-        while (getchar() != '\n');
-    } while (size == 0 || size > 100);
-
+    unsigned int size = readSize();
+    
     inputArray(array, size);
     printArray(array, size);
 
@@ -39,44 +47,90 @@ int main() {
     return 0;
 }
 
-void inputArray(unsigned int array[], size_t size) {
+
+
+void clearStandardInput() {
+    int c = 0;
+
+    while ((c = getchar()) && c != '\n' && c != EOF);
+}
+
+
+
+unsigned int readElem() {
+    unsigned int elem   =   0;
+    int inputArgument   =   0;
+
+    do {
+        inputArgument = scanf("%u", &elem);
+
+        if (inputArgument != 1) {
+            clearStandardInput();
+        }
+    } while (inputArgument != 1);
+
+    return elem;
+}
+
+unsigned int readSize() {
+    unsigned int size   =   0;
+    int inputArgument   =   0;
+
+    do {
+        printf("Enter the size of the array: ");
+
+        inputArgument = scanf("%u", &size);
+
+        if (inputArgument != 1) {
+            clearStandardInput();
+        }
+    } while (inputArgument != 1 || size == 0 || size > MAX_CAPACITY);
+
+    return size;
+}
+
+
+
+void inputArray(unsigned int array[], unsigned int size) {
     if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
-        return;
+        exit(EXIT_FAILURE);
     }
 
     printf("Enter the elements of the array: ");
 
-    for (size_t i = 0; i < size; ++i) {
+    for (unsigned int i = 0; i < size; ++i) {
         scanf("%u", &array[i]);
     }
 }
 
-void printArray(const unsigned int array[], size_t size) {
+void printArray(const unsigned int array[], unsigned int size) {
     if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
-        return;
+        exit(EXIT_FAILURE);
     }
 
     printf("The elements of the array: ");
 
-    for (size_t i = 0; i < size; ++i) {
+    for (unsigned int i = 0; i < size; ++i) {
         printf("%u ", array[i]);
     }
 
     putchar('\n');
 }
 
-int isSequenceIncreasing(const unsigned int array[], size_t size) {
+
+
+int isSequenceIncreasing(const unsigned int array[], unsigned int size) {
     if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         exit(EXIT_FAILURE);
     }
     
-    for (size_t i = 0; i < size - 1; ++i) {
+    for (unsigned int i = 0; i < size - 1; ++i) {
         if (array[i] <= array[i + 1]) {
             continue;
         } else {
@@ -87,14 +141,14 @@ int isSequenceIncreasing(const unsigned int array[], size_t size) {
     return 1;
 }
 
-int isSequenceDecreasing(const unsigned int array[], size_t size) {
+int isSequenceDecreasing(const unsigned int array[], unsigned int size) {
     if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         exit(EXIT_FAILURE);
     }
 
-    for (size_t i = 0; i < size - 1; ++i) {
+    for (unsigned int i = 0; i < size - 1; ++i) {
         if (array[i] >= array[i + 1]) {
             continue;
         } else {
@@ -105,14 +159,15 @@ int isSequenceDecreasing(const unsigned int array[], size_t size) {
     return 1;
 }
 
-int isSequenceStrictlyIncreasing(const unsigned int array[], size_t size) {
+
+int isSequenceStrictlyIncreasing(const unsigned int array[], unsigned int size) {
     if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         exit(EXIT_FAILURE);
     }
 
-    for (size_t i = 0; i < size - 1; ++i) {
+    for (unsigned int i = 0; i < size - 1; ++i) {
         if (array[i] < array[i + 1]) {
             continue;
         } else {
@@ -123,14 +178,14 @@ int isSequenceStrictlyIncreasing(const unsigned int array[], size_t size) {
     return 1;
 }
 
-int isSequenceStrictlyDecreasing(const unsigned int array[], size_t size) {
+int isSequenceStrictlyDecreasing(const unsigned int array[], unsigned int size) {
     if (size == 0 || size > MAX_CAPACITY) {
         printf("Invalid size for the array!\n");
 
         exit(EXIT_FAILURE);
     }
 
-    for (size_t i = 0; i < size - 1; ++i) {
+    for (unsigned int i = 0; i < size - 1; ++i) {
         if (array[i] > array[i + 1]) {
             continue;
         } else {
