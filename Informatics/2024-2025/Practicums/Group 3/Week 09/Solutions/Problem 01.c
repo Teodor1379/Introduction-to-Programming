@@ -113,8 +113,8 @@ void printArray(const int array[], unsigned int size) {
 
 
 void mergeArrays(const int array1[], const int array2[], int result[], unsigned int size1, unsigned int size2) {
-    assert(size1 != 0);
-    assert(size2 != 0);
+    assert(size1 != 0           );
+    assert(size2 != 0           );
     assert(size1 <= MAX_CAPACITY);
     assert(size2 <= MAX_CAPACITY);
 
