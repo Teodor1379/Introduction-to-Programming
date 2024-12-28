@@ -105,8 +105,6 @@ void inputArray(int array[], unsigned int size) {
     }
 }
 
-
-
 void printArray(const int array[], unsigned int size) {
     assert(size != 0            );
     assert(size <= MAX_CAPACITY );
