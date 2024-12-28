@@ -18,12 +18,8 @@ unsigned int    readSize(unsigned int MAX, const char* name );
 
 
 
-int validateSize(unsigned int MAX, unsigned int size);
-
-
-
-void inputMatrix(int matrix[MAX_SIZE1][MAX_SIZE2], unsigned int size1, unsigned int size2);
-void printMatrix(int matrix[MAX_SIZE1][MAX_SIZE2], unsigned int size1, unsigned int size2);
+void inputMatrix(       int matrix[MAX_SIZE1][MAX_SIZE2], unsigned int size1, unsigned int size2);
+void printMatrix(const  int matrix[MAX_SIZE1][MAX_SIZE2], unsigned int size1, unsigned int size2);
 
 
 
@@ -83,15 +79,9 @@ unsigned int readSize(unsigned int MAX, const char* name) {
 
 
 
-int validateSize(unsigned int MAX, unsigned int size) {
-    return size != 0 && size <= MAX;
-}
-
-
-
 void inputMatrix(int matrix[MAX_SIZE1][MAX_SIZE2], unsigned int size1, unsigned int size2) {
-    assert(validateSize(MAX_SIZE1, size1)   );
-    assert(validateSize(MAX_SIZE2, size2)   );
+    assert(size1 != 0 && size1 <= MAX_SIZE1 );
+    assert(size2 != 0 && size2 <= MAX_SIZE2 );
 
     printf("Enter the elements of the matrix:\n");
 
@@ -102,9 +92,9 @@ void inputMatrix(int matrix[MAX_SIZE1][MAX_SIZE2], unsigned int size1, unsigned 
     }
 }
 
-void printMatrix(int matrix[MAX_SIZE1][MAX_SIZE2], unsigned int size1, unsigned int size2) {
-    assert(validateSize(MAX_SIZE1, size1)   );
-    assert(validateSize(MAX_SIZE2, size2)   );
+void printMatrix(const int matrix[MAX_SIZE1][MAX_SIZE2], unsigned int size1, unsigned int size2) {
+    assert(size1 != 0 && size1 <= MAX_SIZE1 );
+    assert(size2 != 0 && size2 <= MAX_SIZE2 );
 
     printf("The elements of the matrix are:\n");
 
@@ -116,3 +106,7 @@ void printMatrix(int matrix[MAX_SIZE1][MAX_SIZE2], unsigned int size1, unsigned 
         putchar('\n');
     }
 }
+
+
+
+// warning: invalid use of pointers to arrays with different qualifiers in ISO C before C2X [-Wpedantic]

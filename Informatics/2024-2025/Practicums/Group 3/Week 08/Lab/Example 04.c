@@ -1,4 +1,4 @@
-#include <stdlib.h>
+#include <assert.h>
 
 #include <stdio.h>
 
@@ -78,11 +78,8 @@ unsigned int readSize() {
 
 
 void inputArray(int array[], unsigned int size) {
-    if (size == 0 || size > MAX_SIZE) {
-        printf("Invalid size for the array!\n");
-
-        exit(EXIT_FAILURE);
-    }
+    assert(size != 0        );
+    assert(size <= MAX_SIZE );
 
     printf("Enter the elements of the array: ");
 
@@ -92,11 +89,8 @@ void inputArray(int array[], unsigned int size) {
 }
 
 void printArray(const int array[], unsigned int size) {
-    if (size == 0 || size > MAX_SIZE) {
-        printf("Invalid size for the array!\n");
-
-        exit(EXIT_FAILURE);
-    }
+    assert(size != 0        );
+    assert(size <= MAX_SIZE );
 
     printf("The elements of the array are: ");
 
