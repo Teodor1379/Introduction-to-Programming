@@ -4,7 +4,7 @@
 
 
 
-#define MAX_CAPACITY 300
+#define MAX_CAPACITY 100
 
 
 
@@ -22,13 +22,13 @@ void printArray(const   int array[], unsigned int size);
 
 
 
-int insertAtBeg(int array[], unsigned int* size, int element                    );
-int insertAtEnd(int array[], unsigned int* size, int element                    );
-int insertAtPos(int array[], unsigned int* size, int element, unsigned int pos  );
+int removeAtBeg(int array[], unsigned int* size                     );
+int removeAtEnd(int array[], unsigned int* size                     );
+int removeAtPos(int array[], unsigned int* size, unsigned int pos   );
 
 
 
-void transformArray(int array[], unsigned int* size);
+void removeElement(int array[], unsigned int* size, int element);
 
 
 
@@ -40,7 +40,11 @@ int main() {
     inputArray(array, size);
     printArray(array, size);
 
-    transformArray(array, &size);
+    printf("Enter the number: ");
+
+    int number = readElem();
+
+    removeElement(array, &size, number);
 
     printArray(array, size);
 
@@ -84,7 +88,7 @@ unsigned int readSize() {
         if (inputArgument != 1) {
             clearStandardInput();
         }
-    } while (inputArgument != 1 || size == 0 || size > MAX_CAPACITY / 2);
+    } while (inputArgument != 1 || size == 0 || size > MAX_CAPACITY);
 
     return size;
 }
@@ -117,61 +121,45 @@ void printArray(const int array[], unsigned int size) {
 
 
 
-int insertAtBeg(int array[], unsigned int* size, int element) {
-    assert(*size != 0           );
+int removeAtBeg(int array[], unsigned int* size) {
+    assert(*size != 0);
     assert(*size <= MAX_CAPACITY);
 
-    if (*size == MAX_CAPACITY) {
-        return 0;
+    for (unsigned int i = 1; i < *size; ++i) {
+        array[i - 1] = array[i];
     }
 
-    for (unsigned int i = *size; i > 0; --i) {
-        array[i] = array[i - 1];
-    }
-
-    array[0] = element;
-
-    *size = *size + 1;
+    *size = *size - 1;
 
     return 1;
 }
 
-int insertAtEnd(int array[], unsigned int* size, int element) {
+int removeAtEnd(int array[], unsigned int* size) {
     assert(*size != 0           );
     assert(*size <= MAX_CAPACITY);
 
-    if (*size == MAX_CAPACITY) {
-        return 0;
-    }
+    array[*size - 1] = 0;
 
-    array[*size] = element;
-
-    *size = *size + 1;
+    *size = *size - 1;
 
     return 1;
 }
 
-int insertAtPos(int array[], unsigned int* size, int element, unsigned int pos) {
-    assert(*size != 0           );
+int removeAtPos(int array[], unsigned int* size, unsigned int pos) {
+    assert(*size != 0);
     assert(*size <= MAX_CAPACITY);
-    assert(pos <= *size);
-
-    if (*size == MAX_CAPACITY) {
-        return 0;
-    }
+    assert(pos < *size);
 
     if (pos == 0) {
-        return insertAtBeg(array, size, element);
-    } else if (pos == *size) {
-        return insertAtEnd(array, size, element);
+        return removeAtBeg(array, size);
+    } else if (pos == *size - 1) {
+        return removeAtEnd(array, size);
     } else {
-        for (unsigned int i = *size; i > pos; --i) {
-            array[i] = array[i - 1];
+        for (unsigned int i = pos; i < *size - 1; ++i) {
+            array[i] = array[i + 1];
         }
 
-        array[pos] = element;
-
-        *size = *size + 1;
+        *size = *size - 1;
 
         return 1;
     }
@@ -179,21 +167,12 @@ int insertAtPos(int array[], unsigned int* size, int element, unsigned int pos) 
 
 
 
-void transformArray(int array[], unsigned int* size) {
-    assert(*size != 0           );
-    assert(*size <= MAX_CAPACITY);
-
-    for (unsigned int i = 0; i < *size; i += 3) {
-        int valuePred = array[i] - 1;
-        int valueSucc = array[i] + 1;
-
-        int result1 = insertAtPos(array, size, valuePred, i + 0);
-        int result2 = insertAtPos(array, size, valueSucc, i + 2);
-
-        if (result1 == 0 || result2 == 0) {
-            puts("Internal Error!");
-
-            return;
+void removeElement(int array[], unsigned int* size, int element) {
+    for (unsigned int i = 0; i < *size; ) {
+        if (array[i] == element) {
+            removeAtPos(array, size, i);
+        } else {
+            i = i + 1;
         }
     }
 }

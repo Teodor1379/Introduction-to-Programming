@@ -190,6 +190,12 @@ void transformArray(double array[], unsigned int* size) {
     for (unsigned int i = 0; i < *size - 1; i += 2) {    
         double averageValue = (array[i] + array[i + 1]) / 2.0;
 
-        insertAtPos(array, size, averageValue, i + 1);
+        int result = insertAtPos(array, size, averageValue, i + 1);
+
+        if (result == 0) {
+            puts("Internal Error!");
+
+            return;
+        }
     }
 }
