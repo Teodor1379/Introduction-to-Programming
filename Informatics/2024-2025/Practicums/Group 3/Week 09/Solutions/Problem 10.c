@@ -168,6 +168,9 @@ int removeAtPos(int array[], unsigned int* size, unsigned int pos) {
 
 
 void removeElement(int array[], unsigned int* size, int element) {
+    assert(*size != 0               );
+    assert(*size <= MAX_CAPACITY    );
+    
     for (unsigned int i = 0; i < *size; ) {
         if (array[i] == element) {
             removeAtPos(array, size, i);
