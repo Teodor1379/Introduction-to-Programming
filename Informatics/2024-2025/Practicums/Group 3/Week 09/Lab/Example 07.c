@@ -38,7 +38,7 @@ int main() {
 
 
     if (insertAtBeg(array, &size, 1379))    { printArray(array, size);  }   else    { puts("Insert in array error!");    return 1;   }
-    if (insertAtEnd(array, &size, 1379))    { printArray(array, size);  }   else    { puts("Inserr in array error!");    return 1;   }
+    if (insertAtEnd(array, &size, 1379))    { printArray(array, size);  }   else    { puts("Insert in array error!");    return 1;   }
 
     if (insertAtPos(array, &size, 9731,    0))  { printArray(array, size);  }   else    { puts("Insert in array error!");    return 1;   }
     if (insertAtPos(array, &size, 9731, size))  { printArray(array, size);  }   else    { puts("Insert in array error!");    return 1;   }
@@ -155,7 +155,7 @@ int insertAtEnd(int array[], unsigned int* size, int element) {
 int insertAtPos(int array[], unsigned int* size, int element, unsigned int pos) {
     assert(*size != 0           );
     assert(*size <= MAX_CAPACITY);
-    assert(pos < *size          );
+    assert(pos <= *size          );
 
     if (*size == MAX_CAPACITY) {
         return 0;
@@ -163,7 +163,7 @@ int insertAtPos(int array[], unsigned int* size, int element, unsigned int pos) 
 
     if (pos == 0) {
         return insertAtBeg(array, size, element);
-    } else if (pos == *size - 1) {
+    } else if (pos == *size) {
         return insertAtEnd(array, size, element);
     } else {
         for (unsigned int i = *size; i > pos; --i) {
