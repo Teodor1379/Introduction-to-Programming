@@ -123,8 +123,8 @@ unsigned int readSize(unsigned int MAX, int counter, const char* name) {
 
 
 void inputMatrix(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned int cols) {
-    assert(rows != 0 && rows <= MAX_ROWS    );
-    assert(cols != 0 && cols <= MAX_COLS    );
+    assert(rows != 0 && rows <= MAX_ROWS);
+    assert(cols != 0 && cols <= MAX_COLS);
 
     printf("Enter the elements of the matrix:\n");
 
@@ -136,8 +136,8 @@ void inputMatrix(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned int
 }
 
 void printMatrix(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned int cols) {
-    assert(rows != 0 && rows <= MAX_ROWS    );
-    assert(cols != 0 && cols <= MAX_COLS    );
+    assert(rows != 0 && rows <= MAX_ROWS);
+    assert(cols != 0 && cols <= MAX_COLS);
 
     printf("The elements of the matrix are:\n");
 
