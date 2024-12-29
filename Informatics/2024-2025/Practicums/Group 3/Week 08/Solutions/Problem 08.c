@@ -23,11 +23,6 @@ void printMatrix(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned int
 
 
 
-void traverseRow1(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned int cols, unsigned int index);
-void traverseRow2(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned int cols, unsigned int index);
-
-
-
 void traverseMatrix(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned int cols);
 
 
@@ -35,14 +30,14 @@ void traverseMatrix(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned 
 int main() {
     int matrix[MAX_ROWS][MAX_COLS] = { { 0 } };
 
-    unsigned int rows = readSize(MAX_ROWS, "ROWS");
-    unsigned int cols = readSize(MAX_COLS, "COLS");
+    unsigned int rows   =   readSize(MAX_ROWS, "ROWS");
+    unsigned int cols   =   readSize(MAX_COLS, "COLS");
 
     inputMatrix(matrix, rows, cols);
     printMatrix(matrix, rows, cols);
 
     traverseMatrix(matrix, rows, cols);
-    
+
     return 0;
 }
 
@@ -76,7 +71,7 @@ unsigned int readSize(unsigned int MAX, const char* name) {
     int inputArgument   =   0;
 
     do {
-        printf("Enter the %s size of the matrix: ", name);
+        printf("Enter the %s of the matrix: ", name);
 
         inputArgument = scanf("%u", &size);
 
@@ -120,50 +115,54 @@ void printMatrix(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned int
 
 
 
-void traverseRow1(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned int cols, unsigned int index) {
-    assert(rows != 0 && rows <= MAX_ROWS);
-    assert(cols != 0 && cols <= MAX_COLS);
-    assert(index < MAX_ROWS             );
-
-    for (unsigned int j = 0; j < cols; ++j) {
-        printf("%d ", matrix[index][j]);
-    }
-
-    putchar('\n');
-}
-
-void traverseRow2(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned int cols, unsigned int index) {
-    assert(rows != 0 && rows <= MAX_ROWS);
-    assert(cols != 0 && cols <= MAX_COLS);
-    assert(index < MAX_ROWS             );
-
-    for (unsigned int j = cols; j > 0; --j) {
-        printf("%d ", matrix[index][j - 1]);
-    }
-
-    putchar('\n');
-}
-
-
-
 void traverseMatrix(int matrix[MAX_ROWS][MAX_COLS], unsigned int rows, unsigned int cols) {
     assert(rows != 0 && rows <= MAX_ROWS);
     assert(cols != 0 && cols <= MAX_COLS);
 
+    long long   cornerRows1 =   0       ;
+    long long   cornerRows2 =   rows - 1;
+
+    long long   cornerCols1 =   0       ;
+    long long   cornerCols2 =   cols - 1;
+
+    unsigned int counter    =   0       ;
+
     putchar('\n');
 
-    printf("The traverse of the matrix is:\n");
+    printf("The traverse of the matrix is: ");
 
-    int flag = 1;
+    while (counter < rows * cols) {
+        for (long long i = cornerCols1; i <= cornerCols2; ++i) {
+            printf("%d ", matrix[cornerRows1][i]);
 
-    for (unsigned int i = 0; i < rows; ++i) {
-        if (flag) {
-            traverseRow1(matrix, rows, cols, i);    
-        } else {
-            traverseRow2(matrix, rows, cols, i);
+            counter = counter + 1;
         }
 
-        flag = !flag;
+        cornerRows1 = cornerRows1 + 1;
+
+        for (long long i = cornerRows1; i <= cornerRows2; ++i) {
+            printf("%d ", matrix[i][cornerCols2]);
+
+            counter = counter + 1;
+        }
+
+        cornerCols2 = cornerCols2 - 1;
+
+        for (long long i = cornerCols2; i >= cornerCols1; --i) {
+            printf("%d ", matrix[cornerRows2][i]);
+
+            counter = counter + 1;
+        }
+
+        cornerRows2 = cornerRows2 - 1;
+
+        for (long long i = cornerRows2; i >= cornerRows1; --i) {
+            printf("%d ", matrix[i][cornerCols1]);
+
+            counter = counter + 1;
+        }
+
+        cornerCols1 = cornerCols1 + 1;
     }
 
     putchar('\n');
