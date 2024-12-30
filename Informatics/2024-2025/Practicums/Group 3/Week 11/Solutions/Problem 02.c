@@ -70,6 +70,8 @@ char* buildString() {
 }
 
 void clearString(char* string) {
+    assert(string != NULL   );
+
     free(string);
 
     string = NULL;
@@ -101,6 +103,8 @@ int isOtherLetter(const char character) {
 
 
 unsigned int countLowerLetters(const char* string) {
+    assert(string != NULL   );
+
     unsigned int result = 0;
 
     for (unsigned int i = 0; string[i] != '\0'; ++i) {
@@ -113,6 +117,8 @@ unsigned int countLowerLetters(const char* string) {
 }
 
 unsigned int countUpperLetters(const char* string) {
+    assert(string != NULL   );
+
     unsigned int result = 0;
 
     for (unsigned int i = 0; string[i] != '\0'; ++i) {
@@ -125,6 +131,8 @@ unsigned int countUpperLetters(const char* string) {
 }
 
 unsigned int countDigitLetters(const char* string) {
+    assert(string != NULL   );
+
     unsigned int result = 0;
 
     for (unsigned int i = 0; string[i] != '\0'; ++i) {
@@ -137,6 +145,8 @@ unsigned int countDigitLetters(const char* string) {
 }
 
 unsigned int countOtherLetters(const char* string) {
+    assert(string != NULL   );
+
     unsigned int result = 0;
 
     for (unsigned int i = 0; string[i] != '\0'; ++i) {
