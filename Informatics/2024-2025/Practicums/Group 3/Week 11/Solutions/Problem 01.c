@@ -72,12 +72,11 @@ char readCharacter() {
 
 
 char* buildString() {
-    printf("Enter the string: ");
-
     char* string = (char*)(malloc(MAX * sizeof(char)));
 
     if (string != NULL) {
-        fgets(string, MAX, stdin);
+        printf("Input the string: ");   fgets(string, MAX,  stdin   );
+        printf("Output the string: ");  fputs(string,       stdout  );
     } 
 
     return string;
