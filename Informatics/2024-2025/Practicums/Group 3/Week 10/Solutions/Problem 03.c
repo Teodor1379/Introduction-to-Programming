@@ -18,7 +18,6 @@ unsigned int    readSize();
 
 
 int* buildArray(                    unsigned int size   );
-int* cloneArray(const   int* array, unsigned int size   );
 void demolArray(        int* array                      );
 
 void inputArray(        int* array, unsigned int size   );
@@ -26,11 +25,20 @@ void printArray(const   int* array, unsigned int size   );
 
 
 
+unsigned int countElements(const int* array, unsigned int size);
+
+
+
+int* filterArray(const int* array, unsigned int size, unsigned int* sizeClone);
+
+
+
 int main() {
-    unsigned int size = readSize();
+    unsigned int sizeArray  =   readSize()  ;
+    unsigned int sizeClone  =   0           ;
 
 
-    int* array = buildArray(size);
+    int* array = buildArray(sizeArray);
 
     if (array == NULL) {
         puts("Allocating Memory... ERROR!");
@@ -39,7 +47,7 @@ int main() {
     }
 
 
-    int* clone = cloneArray(array, size);
+    int* clone = filterArray(array, sizeArray, &sizeClone);
 
     if (clone == NULL) {
         puts("Allocating Memory... ERROR!");
@@ -49,8 +57,7 @@ int main() {
         return 1;
     }
 
-
-    printArray(clone, size);
+    printArray(clone, sizeClone);
 
 
     demolArray(array);
@@ -104,7 +111,7 @@ unsigned int readSize() {
 
 
 int* buildArray(unsigned int size) {
-    assert(size     !=  0   );
+    assert(size     != 0    );
 
     int* array = (int*)(malloc(size * sizeof(int)));
 
@@ -114,21 +121,6 @@ int* buildArray(unsigned int size) {
     }
 
     return array;
-}
-
-int* cloneArray(const int* array, unsigned int size) {
-    assert(array    !=  NULL    );
-    assert(size     !=  0       );
-
-    int* clone = malloc(size * sizeof(int));
-
-    if (clone != NULL) {
-        for (unsigned int i = 0; i < size; ++i) {
-            clone[i] = array[i];
-        }
-    }
-
-    return clone;
 }
 
 void demolArray(int* array) {
@@ -149,12 +141,11 @@ void inputArray(int* array, unsigned int size) {
     for (unsigned int i = 0; i < size; ++i) {
         array[i] = readElem();
     }
-    
 }
 
 void printArray(const int* array, unsigned int size) {
-    assert(array    !=  NULL    );
-    assert(size     !=  0       );
+    assert(array    != NULL );
+    assert(size     != 0    );
 
     printf("The elements of the array are: ");
 
@@ -163,4 +154,54 @@ void printArray(const int* array, unsigned int size) {
     }
 
     putchar('\n');
+}
+
+
+
+unsigned int countElements(const int* array, unsigned int size) {
+    assert(array    != NULL );
+    assert(size     != 0    );
+
+    unsigned int result = 0;
+
+    for (unsigned int i = 0; i < size; ++i) {
+        if (array[i] % 2 == 0) {
+            result = result + 1;
+        }
+    }
+
+    return result;
+}
+
+
+
+int* filterArray(const int* array, unsigned int size, unsigned int* sizeClone) {
+    assert(array    != NULL );
+    assert(size     != 0    );
+
+    unsigned int occur = countElements(array, size);
+
+    if (occur == 0) {
+        puts("The filtered array is empty!");
+
+        return NULL;
+    }
+
+    int* clone = (int*)(malloc(occur * sizeof(int)));
+
+    if (clone != NULL) {
+        unsigned int index = 0;
+
+        for (unsigned int i = 0; i < size; ++i) {
+            if (array[i] % 2 == 0) {
+                clone[index] = array[i];
+
+                index = index + 1;
+            }
+        }
+
+        *sizeClone = occur;
+    }
+
+    return clone;
 }

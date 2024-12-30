@@ -17,6 +17,8 @@ unsigned int    readSize();
 
 
 int* buildArray(                    unsigned int size   );
+void demolArray(        int* array                      );
+
 void inputArray(        int* array, unsigned int size   );
 void printArray(const   int* array, unsigned int size   );
 
@@ -46,7 +48,7 @@ int main() {
     printf("The MAX value in the array is: %d\n",   *pointerMax);
 
 
-    free(array);   array  =   NULL;
+    demolArray(array);
 
 
     return 0;
@@ -98,7 +100,7 @@ unsigned int readSize() {
 int* buildArray(unsigned int size) {
     assert(size     !=  0   );
 
-    int* array = malloc(size * sizeof(int));
+    int* array = (int*)(malloc(size * sizeof(int)));
 
     if (array != NULL) {
         inputArray(array, size);
@@ -106,6 +108,14 @@ int* buildArray(unsigned int size) {
     }
 
     return array;
+}
+
+void demolArray(int* array) {
+    assert(array    !=  NULL);
+
+    free(array);
+
+    array = NULL;
 }
 
 
