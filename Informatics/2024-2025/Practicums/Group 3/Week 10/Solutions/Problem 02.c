@@ -11,49 +11,42 @@
 void clearStandardInput();
 
 
-
 int             readElem();
 unsigned int    readSize();
 
 
 
 int* buildArray(                    unsigned int size   );
-int* cloneArray(const   int* array, unsigned int size   );
-
 void inputArray(        int* array, unsigned int size   );
 void printArray(const   int* array, unsigned int size   );
+
+
+
+const int* findMin(const int* array, unsigned int size);
+const int* findMax(const int* array, unsigned int size);
 
 
 
 int main() {
     unsigned int size = readSize();
 
-
-    int* array = buildArray(&size);
-
-    if (array == NULL) {
-        puts("Allocating Array Error!");
-
-        return 1;
+    int* array = buildArray(size); 
+    
+    if (array == NULL) { 
+        puts("Allocating Memory... ERROR!");
+                
+        return 1;   
     }
 
 
-    int* clone = cloneArray(array, size);
+    const int* pointerMin = findMin(array, size);
+    const int* pointerMax = findMax(array, size);
 
-    if (clone == NULL) {
-        puts("Allocating Array Error!");
-
-        free(array);
-
-        return 1;
-    }
+    printf("The MIN value in the array is: %d\n",   *pointerMin);
+    printf("The MAX value in the array is: %d\n",   *pointerMax);
 
 
-    printArray(clone, size);
-
-
-    free(array);    array   =   NULL;
-    free(clone);    clone   =   NULL;
+    free(array);   array  =   NULL;
 
 
     return 0;
@@ -89,7 +82,7 @@ unsigned int readSize() {
 
     do {
         printf("Enter the size of the array: ");
-
+        
         inputArgument = scanf("%u", &size);
 
         if (inputArgument != 1) {
@@ -115,38 +108,21 @@ int* buildArray(unsigned int size) {
     return array;
 }
 
-int* cloneArray(const int* array, unsigned int size) {
-    assert(array    !=  NULL    );
-    assert(size     !=  0       );
-
-    int* clone = malloc(size * sizeof(int));
-
-    if (clone != NULL) {
-        for (unsigned int i = 0; i < size; ++i) {
-            clone[i] = array[i];
-        }
-    }
-
-    return clone;
-}
-
-
 
 void inputArray(int* array, unsigned int size) {
-    assert(array    != NULL );
-    assert(size     != 0    );
+    assert(array    !=  NULL);
+    assert(size     !=  0   );
 
     printf("Enter the elements of the array: ");
 
     for (unsigned int i = 0; i < size; ++i) {
         array[i] = readElem();
     }
-    
 }
 
 void printArray(const int* array, unsigned int size) {
-    assert(array    !=  NULL    );
-    assert(size     !=  0       );
+    assert(array    !=  NULL);
+    assert(size     !=  0   );
 
     printf("The elements of the array are: ");
 
@@ -155,4 +131,36 @@ void printArray(const int* array, unsigned int size) {
     }
 
     putchar('\n');
+}
+
+
+
+const int* findMin(const int* array, unsigned int size) {
+    assert(array    !=  NULL);
+    assert(size     !=  0   );
+
+    const int* result = array;
+
+    for (const int* p = array + 1; p < array + size; ++p) {
+        if (*result > *p) {
+            result = p;
+        }
+    }
+
+    return result;
+}
+
+const int* findMax(const int* array, unsigned int size) {
+    assert(array    !=  NULL);
+    assert(size     !=  0   );
+
+    const int* result = array;
+
+    for (const int* p = array + 1; p < array + size; ++p) {
+        if (*result < *p) {
+            result = p;
+        }
+    }
+
+    return result;
 }
