@@ -17,6 +17,12 @@ int main() {
 
     char* string = (char*)(malloc(14 * sizeof(char)));
 
+    if (string == NULL) {
+        puts("Allocating Memory... ERROR!");
+
+        return 1;
+    }
+
     string[0]   =   'E' ;
     string[1]   =   'X' ;
     string[2]   =   'C' ;
@@ -35,6 +41,8 @@ int main() {
     printf("The status of the member is: %s\n", string);
 
     free(string);
+
+    string = NULL;
 
 
     return 0;
