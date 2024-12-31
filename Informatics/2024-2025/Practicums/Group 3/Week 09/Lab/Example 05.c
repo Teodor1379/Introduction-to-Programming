@@ -12,8 +12,9 @@ void clearStandardInput();
 
 
 
-unsigned int    readElem();
-unsigned int    readSize();
+unsigned int    readElem(                   );
+unsigned int    readIndx(unsigned int size  );
+unsigned int    readSize(                   );
 
 
 
@@ -47,6 +48,16 @@ int main() {
     printArray(suffixSums, size);
 
 
+    unsigned int index1 = readIndx(size);
+    unsigned int index2 = readIndx(size);
+
+    unsigned int minIndex = (index1 < index2) ? index1 : index2;
+    unsigned int maxIndex = (index1 > index2) ? index1 : index2;
+
+    printf("The prefix sum is: %d\n", (minIndex == 0       ) ? prefixSums[maxIndex] : prefixSums[maxIndex] - prefixSums[minIndex - 1]);
+    printf("The suffix sum is: %d\n", (maxIndex == size - 1) ? suffixSums[minIndex] : suffixSums[minIndex] - suffixSums[maxIndex + 1]);
+
+
     return 0;
 }
 
@@ -73,6 +84,23 @@ unsigned int readElem() {
     } while (inputArgument != 1);
 
     return elem;
+}
+
+unsigned int readIndx(unsigned int size) {
+    unsigned int indx   =   0;
+    int inputArgument   =   0;
+
+    do {
+        printf("Enter the index: ");
+
+        inputArgument = scanf("%u", &indx);
+
+        if (inputArgument != 1) {
+            clearStandardInput();
+        }
+    } while (inputArgument != 1 || indx >= size);
+
+    return indx;
 }
 
 unsigned int readSize() {
