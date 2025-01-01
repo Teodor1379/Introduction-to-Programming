@@ -104,6 +104,8 @@ unsigned int readSize() {
 
 
 unsigned int* buildArray(unsigned int size) {
+    assert(size != 0);
+
     unsigned int* array = (unsigned int*)(malloc(size * sizeof(unsigned int)));
 
     if (array != NULL) {
@@ -169,6 +171,10 @@ void sortArray(unsigned int* array, unsigned int size) {
 
 
 unsigned int* findElements(unsigned int* array, unsigned int oldSize, unsigned int* newSize) {
+    assert(array != NULL);
+
+    assert(oldSize != 0);
+
     sortArray(array, oldSize);
 
     unsigned int size = 0;
