@@ -100,6 +100,8 @@ unsigned int countWords(const char* string) {
 
 
 char* findMinWord(const char* string) {
+    assert(string != NULL);
+
     unsigned int length = 0;
     unsigned int result = UINT_MAX;
     unsigned int positn = 0;
@@ -143,6 +145,8 @@ char* findMinWord(const char* string) {
 }
 
 char* findMaxWord(const char* string) {
+    assert(string != NULL);
+
     unsigned int length = 0;
     unsigned int result = 0;
     unsigned int positn = 0;
