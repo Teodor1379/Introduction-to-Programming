@@ -15,7 +15,7 @@ void    clearString(char* string    );
 
 
 
-void transformString(char* string);
+int validateString(const char* string);
 
 
 
@@ -29,9 +29,9 @@ int main() {
     }
 
 
-    transformString(string);
+    int result = validateString(string);
 
-    printf("The string is: %s", string);
+    printf("Is the string valid: %s\n", result ? "Yes" : "No");
 
 
     clearString(string);
@@ -63,21 +63,21 @@ void clearString(char* string) {
 
 
 
-void transformString(char* string) {
+int validateString(const char* string) {
     assert(string != NULL);
 
-    unsigned int index1 = 0;
-    unsigned int index2 = 0;
+    long long counter = 0;
 
-    while (string[index1] != '\0') {
-        if (string[index1] != ' ' || (string[index1] == ' ' && string[index1 - 1] != ' ')) {
-            string[index2] = string[index1];
-
-            index2 = index2 + 1;
+    for (unsigned int i = 0; string[i] != '\0'; ++i) {
+        switch (string[i]) {
+            case '(':   counter = counter + 1;  break;
+            case ')':   counter = counter - 1;  break;
         }
 
-        index1 = index1 + 1;
+        if (counter < 0) {
+            return 0;
+        }
     }
 
-    string[index2] = '\0';
+    return counter == 0;
 }
