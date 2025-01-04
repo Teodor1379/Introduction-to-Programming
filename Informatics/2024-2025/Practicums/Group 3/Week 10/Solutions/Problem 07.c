@@ -19,7 +19,7 @@ unsigned int    readSize(const char* name   );
 
 int**   buildMatrix(                unsigned int rows, unsigned int cols);
 int**   cloneMatrix(int** matrix,   unsigned int rows, unsigned int cols);
-void    clearMatrix(int** matrix,   unsigned int rows                   );
+void    clearMatrix(int*** matrix,  unsigned int rows                   );
 
 void    inputMatrix(int** matrix,   unsigned int rows, unsigned int cols);
 void    printMatrix(int** matrix,   unsigned int rows, unsigned int cols);
@@ -49,8 +49,8 @@ int main() {
     printMatrix(cloned, rows, cols);
 
 
-    clearMatrix(matrix, rows);
-    clearMatrix(cloned, rows);
+    clearMatrix(&matrix, rows);
+    clearMatrix(&cloned, rows);
 
 
     return 0;
@@ -111,7 +111,7 @@ int** buildMatrix(unsigned int rows, unsigned int cols) {
             matrix[i] = (int*)(malloc(cols * sizeof(int)));
 
             if (matrix[i] == NULL) {
-                clearMatrix(matrix, rows);
+                clearMatrix(&matrix, rows);
 
                 return NULL;
             }
@@ -134,7 +134,7 @@ int** cloneMatrix(int** matrix, unsigned int rows, unsigned int cols) {
             cloned[i] = (int*)(malloc(cols * sizeof(int)));
 
             if (cloned[i] == NULL) {
-                clearMatrix(cloned, rows);
+                clearMatrix(&cloned, rows);
 
                 return NULL;
             }
@@ -148,18 +148,18 @@ int** cloneMatrix(int** matrix, unsigned int rows, unsigned int cols) {
     return cloned;
 }
 
-void clearMatrix(int** matrix, unsigned int rows) {
-    assert(matrix != NULL);
+void clearMatrix(int*** matrix, unsigned int rows) {
+    assert(*matrix != NULL);
 
     assert(rows != 0);
 
     for (unsigned int i = 0; i < rows; ++i) {
-        free(matrix[i]);
+        free((*matrix)[i]);
     }
 
-    free(matrix);
+    free(*matrix);
 
-    matrix = NULL;
+    *matrix = NULL;
 }
 
 
