@@ -19,7 +19,7 @@ unsigned int    readSize();
 
 int* buildArray1(                       unsigned int size   );
 int* buildArray2(                       unsigned int size   );
-void clearArray (        int* array                         );
+void clearArray (        int** array                        );
 
 void inputArray (        int* array,    unsigned int size   );
 void printArray (const   int* array,    unsigned int size   );
@@ -35,8 +35,8 @@ int main() {
     unsigned int size2 = readSize();
 
 
-    int* array1 = buildArray1(size1);   if (array1 == NULL) { puts("Allocating Memory... ERROR!");                       return 1;   }
-    int* array2 = buildArray2(size2);   if (array2 == NULL) { puts("Allocating Memory... ERROR!");   clearArray(array1); return 1;   }
+    int* array1 = buildArray1(size1);   if (array1 == NULL) { puts("Allocating Memory... ERROR!");                          return 1;   }
+    int* array2 = buildArray2(size2);   if (array2 == NULL) { puts("Allocating Memory... ERROR!");   clearArray(&array1);   return 1;   }
 
 
     if (insertElement(&array1, &size1, 13)  ==  NULL)   {   puts("Reallocating Memory... ERROR!");  }
@@ -46,8 +46,8 @@ int main() {
     printArray(array2, size2);
 
 
-    clearArray(array1);
-    clearArray(array2);
+    clearArray(&array1);
+    clearArray(&array2);
 
 
     return 0;
@@ -157,8 +157,8 @@ int* buildArray2(unsigned int size) {
     return array;
 }
 
-void clearArray(int* array) {
-    assert(array != NULL);
+void clearArray(int** array) {
+    assert(*array != NULL);
 
     // void free(void* ptr);
     // Parameters:
@@ -178,9 +178,9 @@ void clearArray(int* array) {
     // The behavior is undefined after free() returns, an access is made through the pointer ptr
     // (unless another allocation function happened to result in a pointer value equal to ptr).
 
-    free(array);
+    free(*array);
 
-    array = NULL;
+    *array = NULL;
 }
 
 
