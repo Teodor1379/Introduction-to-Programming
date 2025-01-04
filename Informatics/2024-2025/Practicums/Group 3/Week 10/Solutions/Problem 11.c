@@ -18,7 +18,7 @@ unsigned int    readSize();
 
 
 unsigned int*   buildArray(                                 unsigned int size   );
-void            clearArray(         unsigned    int* array                      );
+void            clearArray(         unsigned    int** array                     );
 
 void            inputArray(         unsigned    int* array, unsigned int size   );
 void            printArray(const    unsigned    int* array, unsigned int size   );
@@ -49,11 +49,15 @@ int main() {
 
     unsigned int* elements = findElements(array, oldSize, &newSize);
 
-    printArray(elements, newSize);
+    if (newSize == 0) {
+        printf("All numbers are in the interval!\n");
+    } else {
+        printArray(elements, newSize);
+    }
 
 
-    clearArray(array);
-    clearArray(elements);
+    clearArray(&array);
+    clearArray(&elements);
 
 
     return 0;
@@ -116,12 +120,12 @@ unsigned int* buildArray(unsigned int size) {
     return array;
 }
 
-void clearArray(unsigned int* array) {
-    assert(array != NULL);
+void clearArray(unsigned int** array) {
+    assert(*array != NULL);
 
-    free(array);
+    free(*array);
 
-    array = NULL;
+    *array = NULL;
 }
 
 
