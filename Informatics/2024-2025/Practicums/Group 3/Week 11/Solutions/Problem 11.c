@@ -13,7 +13,7 @@
 
 
 char*   buildString(                );
-void    clearString(char* string    );
+void    clearString(char** string   );
 
 
 
@@ -35,7 +35,7 @@ int main() {
     if (string2 == NULL) {
         puts("Allocating Memory... ERROR!");
 
-        clearString(string1);
+        clearString(&string1);
 
         return 1;
     }
@@ -64,8 +64,8 @@ int main() {
     printf("The string is: %s", string1);
 
 
-    clearString(string1);
-    clearString(string2);
+    clearString(&string1);
+    clearString(&string2);
 
 
     return 0;
@@ -84,12 +84,12 @@ char* buildString() {
     return string;
 }
 
-void clearString(char* string) {
-    assert(string != NULL);
+void clearString(char** string) {
+    assert(*string != NULL);
 
-    free(string);
+    free(*string);
 
-    string = NULL;
+    *string = NULL;
 }
 
 
