@@ -17,7 +17,7 @@ int isUpperLetter(const char c);
 
 
 char*   buildString(                );
-void    clearString(char* string    );
+void    clearString(char** string   );
 
 
 
@@ -40,7 +40,7 @@ int main() {
     printf("The result string is: %s", string);
 
 
-    clearString(string);
+    clearString(&string);
 
 
     return 0;
@@ -64,12 +64,12 @@ char* buildString() {
     return string;
 }
 
-void clearString(char* string) {
-    assert(string != NULL   );
+void clearString(char** string) {
+    assert(*string != NULL   );
 
-    free(string);
+    free(*string);
 
-    string = NULL;
+    *string = NULL;
 }
 
 
