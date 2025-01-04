@@ -15,7 +15,7 @@
 
 
 char*   buildString(                );
-void    clearString(char* string    );
+void    clearString(char** string   );
 
 
 
@@ -50,9 +50,9 @@ int main() {
     printf("MAX word in the string is: %s\n",   maxWord);
 
 
-    clearString(minWord);
-    clearString(maxWord);
-    clearString(string);
+    clearString(&minWord);
+    clearString(&maxWord);
+    clearString(&string);
 
 
     return 0;
@@ -73,12 +73,12 @@ char* buildString() {
     return string;
 }
 
-void clearString(char* string) {
-    assert(string != NULL);
+void clearString(char** string) {
+    assert(*string != NULL);
 
-    free(string);
+    free(*string);
 
-    string = NULL;
+    *string = NULL;
 }
 
 
