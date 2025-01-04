@@ -19,14 +19,14 @@ unsigned int    readSize(const char* name   );
 
 
 int**   buildMatrix(                            unsigned int rows, unsigned int cols);
-void    clearMatrix(            int** matrix,   unsigned int cols                   );
+void    clearMatrix(           int***   matrix, unsigned int cols                   );
 
 void    inputMatrix(            int**   matrix, unsigned int rows, unsigned int cols);
 void    printMatrix(const int* const*   matrix, unsigned int rows, unsigned int cols);
 
 
 
-void deleteMatrixCol(int** matrix, unsigned int* cols, unsigned int index);
+void deleteMatrixCol(int*** matrix, unsigned int* cols, unsigned int index);
 
 
 
@@ -52,12 +52,12 @@ int main() {
 
     unsigned int index = readIndx(cols);
 
-    deleteMatrixCol(matrix, &cols, index);
+    deleteMatrixCol(&matrix, &cols, index);
 
     printMatrix(pointr, rows, cols);
 
 
-    clearMatrix(matrix, cols);
+    clearMatrix(&matrix, cols);
 
 
     return 0;
@@ -135,7 +135,7 @@ int** buildMatrix(unsigned int rows, unsigned int cols) {
             matrix[i] = (int*)(malloc(rows * sizeof(int)));
 
             if (matrix[i] == NULL) {
-                clearMatrix(matrix, i);
+                clearMatrix(&matrix, i);
 
                 return NULL;
             }
@@ -145,16 +145,16 @@ int** buildMatrix(unsigned int rows, unsigned int cols) {
     return matrix;
 }
 
-void clearMatrix(int** matrix, unsigned int cols) {
-    assert(matrix != NULL);
+void clearMatrix(int*** matrix, unsigned int cols) {
+    assert(*matrix != NULL);
 
     for (unsigned int i = 0; i < cols; ++i) {
-        free(matrix[i]);
+        free((*matrix)[i]);
     }
 
-    free(matrix);
+    free(*matrix);
 
-    matrix = NULL;
+    *matrix = NULL;
 }
 
 
@@ -192,21 +192,21 @@ void printMatrix(const int* const* matrix, unsigned int rows, unsigned int cols)
 
 
 
-void deleteMatrixCol(int** matrix, unsigned int* cols, unsigned int index) {
+void deleteMatrixCol(int*** matrix, unsigned int* cols, unsigned int index) {
     assert(matrix   != NULL );
     assert(cols     != NULL );
     assert(*cols    != 0    );
     assert(index    <  *cols);
 
     if (index == *cols - 1) {
-        free(matrix[index]);
+        free((*matrix)[index]);
 
         *cols = *cols - 1;
     } else {
-        free(matrix[index]);
+        free((*matrix)[index]);
 
         for (unsigned int i = index; i < *cols - 1; ++i) {
-            matrix[i] = matrix[i + 1];
+            (*matrix)[i] = (*matrix)[i + 1];
         }
 
         *cols = *cols - 1;
