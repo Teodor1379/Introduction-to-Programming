@@ -19,7 +19,7 @@ unsigned int    readSize();
 
 int* buildArray(                    unsigned int size   );
 int* cloneArray(        int* array, unsigned int size   );
-void clearArray(        int* array                      );
+void clearArray(        int** array                     );
 
 void inputArray(        int* array, unsigned int size   );
 void printArray(const   int* array, unsigned int size   );
@@ -47,7 +47,7 @@ int main() {
     printArray(array, size);
 
 
-    clearArray(array);
+    clearArray(&array);
 
 
     return 0;
@@ -126,12 +126,12 @@ int* cloneArray(int* array, unsigned int size) {
     return cloned;
 }
 
-void clearArray(int* array) {
-    assert(array    != NULL );
+void clearArray(int** array) {
+    assert(*array    != NULL );
 
-    free(array);
+    free(*array);
 
-    array = NULL;
+    *array = NULL;
 }
 
 
@@ -188,5 +188,5 @@ void transformArray(int* array, unsigned int size) {
         }
     }
 
-    clearArray(cloned);
+    clearArray(&cloned);
 }
