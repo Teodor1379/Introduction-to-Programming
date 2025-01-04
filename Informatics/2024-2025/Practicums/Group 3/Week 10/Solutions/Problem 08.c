@@ -18,7 +18,7 @@ unsigned int    readSize();
 
 
 int**   buildMatrix(                            unsigned int rows   );
-void    clearMatrix(            int**   matrix, unsigned int rows   );
+void    clearMatrix(           int***   matrix, unsigned int rows   );
 
 void    printMatrix(const int* const*   matrix, unsigned int rows   );
 
@@ -42,7 +42,7 @@ int main() {
     printMatrix(pointr, rows);
 
 
-    clearMatrix(matrix, rows);
+    clearMatrix(&matrix, rows);
 
 
     return 0;
@@ -102,7 +102,7 @@ int** buildMatrix(unsigned int rows) {
             matrix[i] = (int*)(malloc((i + 1) * sizeof(int)));
 
             if (matrix[i] == NULL) {
-                clearMatrix(matrix, rows);
+                clearMatrix(&matrix, rows);
 
                 return NULL;
             }
@@ -116,17 +116,18 @@ int** buildMatrix(unsigned int rows) {
     return matrix;
 }
 
-void clearMatrix(int** matrix, unsigned int rows) {
-    assert(matrix   != NULL );
+void clearMatrix(int*** matrix, unsigned int rows) {
+    assert(*matrix   != NULL );
+
     assert(rows     != 0    );
 
     for (unsigned int i = 0; i < rows; ++i) {
-        free(matrix[i]);
+        free((*matrix)[i]);
     }
 
-    free(matrix);
+    free(*matrix);
 
-    matrix = NULL;
+    *matrix = NULL;
 }
 
 
