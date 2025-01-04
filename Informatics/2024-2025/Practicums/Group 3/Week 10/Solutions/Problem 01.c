@@ -19,7 +19,7 @@ unsigned int    readSize();
 
 int* buildArray(                    unsigned int size   );
 int* cloneArray(const   int* array, unsigned int size   );
-void clearArray(        int* array                      );
+void clearArray(        int** array                     );
 
 void inputArray(        int* array, unsigned int size   );
 void printArray(const   int* array, unsigned int size   );
@@ -44,7 +44,7 @@ int main() {
     if (clone == NULL) {
         puts("Allocating Memory... ERROR!");
 
-        clearArray(array);
+        clearArray(&array);
 
         return 1;
     }
@@ -53,8 +53,8 @@ int main() {
     printArray(clone, size);
 
 
-    clearArray(array);
-    clearArray(clone);
+    clearArray(&array);
+    clearArray(&clone);
 
 
     return 0;
@@ -131,12 +131,12 @@ int* cloneArray(const int* array, unsigned int size) {
     return clone;
 }
 
-void clearArray(int* array) {
-    assert(array    != NULL );
+void clearArray(int** array) {
+    assert(*array    != NULL );
 
-    free(array);
+    free(*array);
 
-    array = NULL;
+    *array = NULL;
 }
 
 
