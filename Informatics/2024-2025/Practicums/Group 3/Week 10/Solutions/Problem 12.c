@@ -15,7 +15,7 @@ void clearStandardInput();
 
 
 unsigned int*   buildArray(                     );
-void            clearArray(unsigned int* array  );
+void            clearArray(unsigned int** array );
 
 void            printArray(unsigned int* array  );
 
@@ -68,12 +68,12 @@ unsigned int* buildArray() {
     return array;
 }
 
-void clearArray(unsigned int* array) {
-    assert(array != NULL);
+void clearArray(unsigned int** array) {
+    assert(*array != NULL);
 
-    free(array);
+    free(*array);
 
-    array = NULL;
+    *array = NULL;
 }
 
 
@@ -109,5 +109,5 @@ void convertBinary(unsigned int number) {
 
     printArray(array);
 
-    clearArray(array);
+    clearArray(&array);
 }
