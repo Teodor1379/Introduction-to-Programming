@@ -11,7 +11,7 @@
 
 
 char*   buildString(                );
-void    clearString(char** string    );
+void    clearString(char** string   );
 
 
 
