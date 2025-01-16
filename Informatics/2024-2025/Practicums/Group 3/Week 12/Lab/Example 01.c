@@ -115,7 +115,11 @@ unsigned long long int fibonacciRecursiveLinear(unsigned int number) {
 }
 
 unsigned long long int fibonacciMemoization(unsigned int number) {
-    unsigned long long int array[MAX_SIZE] = { 0 };
+    static unsigned long long int array[MAX_SIZE] = { 0 };
+
+    if (array[number] != 0) {
+        return array[number];
+    }
 
     array[0] = 0;
     array[1] = 1;
