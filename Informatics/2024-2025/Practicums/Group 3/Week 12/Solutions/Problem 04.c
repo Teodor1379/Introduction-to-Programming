@@ -68,6 +68,10 @@ unsigned int countWays(unsigned int stairs) {
                 W(N - 1) + W(N - 2),    S > 2
     */
 
+    if (stairs == 0) {
+        return 0;
+    }
+
     if (stairs == 1) {
         return 1;
     }
