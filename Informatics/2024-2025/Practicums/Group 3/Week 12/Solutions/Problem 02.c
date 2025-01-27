@@ -41,11 +41,19 @@ int main() {
 
     int* array = buildArray(size);
 
+    if (array == NULL) {
+        puts("Allocating Memory... ERROR!");
+
+        return 1;
+    }
+
+
     int sum     =   sumArray    (array, size);
     int product =   productArray(array, size);
 
     printf("The sum     of the elements of the array is: %d\n", sum     );
     printf("The product of the elements of the array is: %d\n", product );
+
 
     clearArray(&array);
 
@@ -113,7 +121,7 @@ int* buildArray(unsigned int size) {
 }
 
 void clearArray(int** array) {
-    assert(*array != NULL);
+    assert(*array   !=  NULL);
 
     free(*array);
 
@@ -149,9 +157,9 @@ void printArray(const int* array, unsigned int size) {
 
 
 int sumArrayHelper(const int* array, unsigned int size, unsigned int index) {
-    assert(array    != NULL );
-    assert(size     != 0    );
-    assert(index    <= size );
+    assert(array    !=  NULL);
+    assert(size     !=  0   );
+    assert(index    <=  size);
 
     if (index == size) {
         return 0;
@@ -161,9 +169,9 @@ int sumArrayHelper(const int* array, unsigned int size, unsigned int index) {
 }
 
 int productArrayHelper(const int* array, unsigned int size, unsigned int index) {
-    assert(array    != NULL );
-    assert(size     != 0    );
-    assert(index    <= size );
+    assert(array    !=  NULL);
+    assert(size     !=  0   );
+    assert(index    <=  size);
     
     if (index == size) {
         return 1;
@@ -175,15 +183,15 @@ int productArrayHelper(const int* array, unsigned int size, unsigned int index) 
 
 
 int sumArray(const int* array, unsigned int size) {
-    assert(array    != NULL );
-    assert(size     != 0    );
+    assert(array    !=  NULL);
+    assert(size     !=  0   );
 
     return sumArrayHelper(array, size, 0);
 }
 
 int productArray(const int* array, unsigned int size) {
-    assert(array    != NULL );
-    assert(size     != 0    );
+    assert(array    !=  NULL);
+    assert(size     !=  0   );
 
     return productArrayHelper(array, size, 0);
 }
