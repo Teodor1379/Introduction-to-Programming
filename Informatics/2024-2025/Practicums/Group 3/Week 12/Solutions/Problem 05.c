@@ -101,7 +101,7 @@ void generateParentheses(unsigned int number1, unsigned int number2, unsigned in
         generateParentheses(number1, number2 - 1, index + 1, string); 
     } else if (number2 == 0) {
         (*string)[index] = '(';
-        generateParentheses(number1 + 1, number2, index + 1, string);
+        generateParentheses(number1 - 1, number2, index + 1, string);
     } else {
         (*string)[index] = '('; generateParentheses(number1 - 1, number2, index + 1, string);
         (*string)[index] = ')'; generateParentheses(number1, number2 - 1, index + 1, string);
